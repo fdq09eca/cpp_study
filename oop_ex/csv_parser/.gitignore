@@ -1,0 +1,6 @@
+*
+!.gitignore
+!*.png
+!*.c
+!*.cpp
+!*.md
