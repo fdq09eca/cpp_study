@@ -6,9 +6,10 @@
 //
 
 #include <iostream>
+#include "CardDeck.hpp"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main() {
+    CardDeck d;
+    std::cout << d;
     return 0;
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F555492425D9CE950064970F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F555492325D9CE950064970F /* main.cpp */; };
+		F555492D25D9CEBF0064970F /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F555492B25D9CEBF0064970F /* Card.cpp */; };
+		F555494125DA19B70064970F /* CardDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F555493F25DA19B70064970F /* CardDeck.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,11 @@
 /* Begin PBXFileReference section */
 		F555492025D9CE950064970F /* blackjack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = blackjack; sourceTree = BUILT_PRODUCTS_DIR; };
 		F555492325D9CE950064970F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F555492B25D9CEBF0064970F /* Card.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
+		F555492C25D9CEBF0064970F /* Card.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
+		F555492F25D9FC4F0064970F /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		F555493F25DA19B70064970F /* CardDeck.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CardDeck.cpp; sourceTree = "<group>"; };
+		F555494025DA19B70064970F /* CardDeck.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CardDeck.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				F555492325D9CE950064970F /* main.cpp */,
+				F555493F25DA19B70064970F /* CardDeck.cpp */,
+				F555494025DA19B70064970F /* CardDeck.hpp */,
+				F555492B25D9CEBF0064970F /* Card.cpp */,
+				F555492C25D9CEBF0064970F /* Card.hpp */,
+				F555492F25D9FC4F0064970F /* common.h */,
 			);
 			path = blackjack;
 			sourceTree = "<group>";
@@ -118,7 +130,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F555494125DA19B70064970F /* CardDeck.cpp in Sources */,
 				F555492425D9CE950064970F /* main.cpp in Sources */,
+				F555492D25D9CEBF0064970F /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
