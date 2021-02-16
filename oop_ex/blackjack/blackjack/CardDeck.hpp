@@ -21,10 +21,13 @@ public:
     CardDeck();
     ~CardDeck();
     void clear();
-    Card* remove(size_t idx);
-    Card* draw();
+    Card remove(size_t idx);
+    Card draw();
     void restart();
     void release();
+    void shuffle();
+    const size_t& count_card() const;
+    const size_t& card_cap() const;
     std::ostream& print(std::ostream& s) const;
     };
         

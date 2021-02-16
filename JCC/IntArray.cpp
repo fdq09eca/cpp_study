@@ -288,6 +288,12 @@ void j_test()
 
 int main()
 {
-    j_test();
+    // j_test();
+    int arr[] = {1, 3, 5, 7, 9, 11};
+    IntArray a(arr, sizeof(arr) / sizeof(*arr));
+    dump_var(a);
+    a.del_idx(5);
+    dump_var(a);
+
     return 0;
 }
