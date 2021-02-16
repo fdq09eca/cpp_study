@@ -27,8 +27,11 @@ private:
 public:
     Card():_suit(Suit_NONE), _rank(0), _value(0){};
     Card(const Suit s, const int r): _suit(s), _rank(r), _value(set_value(r)){};
-    Card(const Suit s, const char r): _suit(s){
-        Card(s, parse_rank(r));
+    Card(const Suit s, const char cr){
+        _suit = s;
+        const int r = parse_rank(cr);
+        _rank = r;
+        _value = set_value(r);
     };
    
     const int parse_rank (const char r) const;
@@ -42,6 +45,6 @@ public:
 };
 
 
-std::ostream& operator << (std::ostream& s, Card& card);
+std::ostream& operator << (std::ostream& s, const Card& card);
 
 #endif

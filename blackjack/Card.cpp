@@ -68,7 +68,7 @@ const int Card::set_value(int rank){
     return rank;
 }
 
-std::ostream& operator << (std::ostream& s, Card& card){
+std::ostream& operator << (std::ostream& s, const Card& card){
     s << card.suit_str() << "-" << card.rank_str() << " value: " << card.value();
     return s;
 }
