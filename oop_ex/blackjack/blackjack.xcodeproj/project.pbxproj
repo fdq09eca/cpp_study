@@ -10,6 +10,10 @@
 		F555492425D9CE950064970F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F555492325D9CE950064970F /* main.cpp */; };
 		F555492D25D9CEBF0064970F /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F555492B25D9CEBF0064970F /* Card.cpp */; };
 		F555494125DA19B70064970F /* CardDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F555493F25DA19B70064970F /* CardDeck.cpp */; };
+		F5CE2C5425DCA736009818B5 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5CE2C5225DCA736009818B5 /* Hand.cpp */; };
+		F5CE2C5E25DCC4A0009818B5 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5CE2C5C25DCC4A0009818B5 /* Game.cpp */; };
+		F5CE2C6225DCC54D009818B5 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5CE2C6025DCC54D009818B5 /* Player.cpp */; };
+		F5CE2C6625DCC556009818B5 /* Dealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5CE2C6425DCC556009818B5 /* Dealer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +36,14 @@
 		F555492F25D9FC4F0064970F /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		F555493F25DA19B70064970F /* CardDeck.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CardDeck.cpp; sourceTree = "<group>"; };
 		F555494025DA19B70064970F /* CardDeck.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CardDeck.hpp; sourceTree = "<group>"; };
+		F5CE2C5225DCA736009818B5 /* Hand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
+		F5CE2C5325DCA736009818B5 /* Hand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Hand.hpp; sourceTree = "<group>"; };
+		F5CE2C5C25DCC4A0009818B5 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		F5CE2C5D25DCC4A0009818B5 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		F5CE2C6025DCC54D009818B5 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		F5CE2C6125DCC54D009818B5 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		F5CE2C6425DCC556009818B5 /* Dealer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Dealer.cpp; sourceTree = "<group>"; };
+		F5CE2C6525DCC556009818B5 /* Dealer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Dealer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +78,16 @@
 			children = (
 				F555492325D9CE950064970F /* main.cpp */,
 				F555493F25DA19B70064970F /* CardDeck.cpp */,
+				F5CE2C5C25DCC4A0009818B5 /* Game.cpp */,
+				F5CE2C5D25DCC4A0009818B5 /* Game.hpp */,
+				F5CE2C6025DCC54D009818B5 /* Player.cpp */,
+				F5CE2C6425DCC556009818B5 /* Dealer.cpp */,
+				F5CE2C6525DCC556009818B5 /* Dealer.hpp */,
+				F5CE2C6125DCC54D009818B5 /* Player.hpp */,
 				F555494025DA19B70064970F /* CardDeck.hpp */,
 				F555492B25D9CEBF0064970F /* Card.cpp */,
+				F5CE2C5225DCA736009818B5 /* Hand.cpp */,
+				F5CE2C5325DCA736009818B5 /* Hand.hpp */,
 				F555492C25D9CEBF0064970F /* Card.hpp */,
 				F555492F25D9FC4F0064970F /* common.h */,
 			);
@@ -130,9 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5CE2C5425DCA736009818B5 /* Hand.cpp in Sources */,
 				F555494125DA19B70064970F /* CardDeck.cpp in Sources */,
+				F5CE2C6225DCC54D009818B5 /* Player.cpp in Sources */,
+				F5CE2C6625DCC556009818B5 /* Dealer.cpp in Sources */,
 				F555492425D9CE950064970F /* main.cpp in Sources */,
 				F555492D25D9CEBF0064970F /* Card.cpp in Sources */,
+				F5CE2C5E25DCC4A0009818B5 /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

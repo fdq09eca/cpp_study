@@ -7,24 +7,24 @@
 
 #include <iostream>
 #include "CardDeck.hpp"
+#include "Game.hpp"
 #include "common.h"
+#define RUN_TEST(NAME) \
+std::cout << "==TEST_" << #NAME << "==\n";     \
+    void TEST_##NAME();                        \
+    TEST_##NAME();                             \
 
-void CardDeck_test() {
-    CardDeck d;
-    dump_var(d);
-    TEST(d.card_cap() == 52);
-    
-    for (size_t idx = 0; idx < 52; idx++) {
-        Card rm_card = d.remove(0);
-        dump_var(rm_card);
-        TEST(d.count_card() == 52 - idx - 1);
-    }
-    
-    
-    
-}
+//==
 
 int main() {
-    CardDeck_test();
+    std::srand(static_cast<unsigned int>(time(NULL)));
+    Game game;
+    game.run();
+//    TEST_Card();
+//    RUN_TEST(CardDeck);
+//    TEST_CardDeck_swap();
+//    TEST_CardDeck_sort();
+//    CardDeck_test();
+    //    Card_test();
     return 0;
 }

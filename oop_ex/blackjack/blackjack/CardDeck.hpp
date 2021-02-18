@@ -13,23 +13,41 @@
 
 class CardDeck: public Card {
 private:
+    CardDeck(const CardDeck& d);
+    void operator=(const CardDeck& d);
     Card* _cards;
-    size_t _len;
-    size_t _cap;
+    size_t _remain;
+    size_t _n_cards;
+    size_t _n_deck;
+    
 
 public:
-    CardDeck();
+    CardDeck(const size_t n_deck = 1);
     ~CardDeck();
     void clear();
-    Card remove(size_t idx);
+    void release();
+    
+    inline size_t remain() const { return _remain; }
+    inline size_t n_cards() const { return _n_cards; }
+    
+    
+    
+
+//    CardDeck& remove(const Card& card);
     Card draw();
     void restart();
-    void release();
-    void shuffle();
-    const size_t& count_card() const;
-    const size_t& card_cap() const;
+    void restart(size_t n_deck);
+    void shuffle(size_t t_time = 1);
+    
+//    const size_t& count() const;
+//    const size_t& cap() const;
     std::ostream& print(std::ostream& s) const;
-    };
+};
         
-std::ostream& operator<<(std::ostream& s , CardDeck& deck);
+inline std::ostream& operator<<(std::ostream& s , CardDeck& deck) { return deck.print(s); }
+
+//TEST
+void TEST_CardDeck();
+
 #endif /* CardDeck_hpp */
+ 

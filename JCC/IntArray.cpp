@@ -294,6 +294,5 @@ int main()
     dump_var(a);
     a.del_idx(5);
     dump_var(a);
-
     return 0;
 }
