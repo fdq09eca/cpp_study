@@ -5,74 +5,101 @@
 //  Created by ChrisLam on 15/02/2021.
 //
 
+#include "Player.hpp"
 #include "CardDeck.hpp"
+#include "common.h"
 
-CardDeck::CardDeck(): _len(0), _cap(52){
-    _cards = new Card[_cap];
+
+CardDeck::CardDeck(size_t n_deck_): _remain(0), _n_deck(n_deck_){
+    _n_cards = 52 * _n_deck;
+    _cards = new Card[_n_cards];
+    if (!_cards) {
+        throw std::runtime_error("failed to new _cards");
+    }
     restart();
 }
 
+
 CardDeck::~CardDeck(){
+    release();
+}
+
+void CardDeck::release() {
+    clear();
     delete [] _cards;
     _cards = nullptr;
-    _len = 0;
-    _cap = 0;
 }
 
 void CardDeck::clear() {
-    _len = 0;
+    _remain = 0;
 }
 
 void CardDeck::restart() {
     if (!_cards) return;
+    clear();
     Card* card = _cards;
-    Card* end = _cards + _cap;
-    for (int r = 1; card < end ; r++) {
-        for (Suit s = Suit_DIAMOND;s <= Suit_SPADE; card++, _len++) {
-            *card = Card(s, r);
-            s = static_cast<Suit>(static_cast<int>(s) + 1);
+    for (int n = 0; n < _n_deck; n++){
+        for (Rank r = Rank_ACE; r <= Rank_K ; rank_inc(r)) {
+            for (Suit s = Suit_DIAMOND;s <= Suit_SPADE; card++, suit_inc(s)) {
+                *card = Card(s, r);
+            }
         }
-    };
+    }
+    _remain = _n_cards;
 }
 
-Card CardDeck::remove(size_t idx) {
-    assert(idx >= 0 && idx < _len);
-    Card* dst = _cards + idx;
-    Card rm_card = *dst;
-    Card* src = dst + 1;
-    size_t mv_element = _len - idx - 1;
-    memmove(dst, src, mv_element * sizeof(Card));
-    assert(_len);
-    _len--;
-    return rm_card;
+
+
+void CardDeck::restart(size_t n_deck) {
+    release();
+    _n_deck = n_deck;
+    _n_cards = _n_deck * 52;
+    _cards = new Card[_n_cards];
+    restart();
 }
 
 Card CardDeck::draw() {
-    std::srand(static_cast<unsigned int>(time(NULL)));
-    if (_len == 0) {
-        restart();
+    assert(_remain > 0);
+    Card card = _cards[_remain - 1];
+    _remain--;
+    return card;
+}
+
+void CardDeck::shuffle(size_t t_times) {
+    for (size_t t = 0; t < t_times; t++){
+        for (size_t i = 0; i < _remain; i++) {
+            int j = std::rand() % _remain;
+            if (i == j) continue;
+            std::swap(_cards[i], _cards[j]);
+        }
     }
-    size_t rand_idx = std::rand() % _len;
-    return remove(rand_idx);
 }
 
-const size_t& CardDeck::count_card() const{
-    return _len;
+void CardDeck::draw_to(Player& p){
+    p.add_card(draw());
 }
 
-const size_t& CardDeck::card_cap() const{
-    return _cap;
+void CardDeck::draw_to(Dealer& d){
+    d.add_card(draw());
 }
 
 std::ostream& CardDeck::print(std::ostream& s) const{
     Card* card = _cards;
-    Card* end = _cards + _cap;
+    Card* end = _cards + _remain;
     for (size_t c = 0; card < end ; card++, c++) {
         s << "Card" << c << ": " << *card << "\n";
     };
     return s;
 }
 
-std::ostream& operator<<(std::ostream& s , CardDeck& deck) {
-    return deck.print(s);
-};
+
+/// TEST
+
+void TEST_CardDeck(){
+    CardDeck d(1);
+    d.shuffle();
+    dump_var(d);
+    dump_var(d.draw());
+    TEST(d.remain() == 51);
+    
+}
