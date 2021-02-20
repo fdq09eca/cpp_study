@@ -21,13 +21,14 @@ class Game {
     Player _players[MAX_PLAYERS];
     size_t _n_players;
     size_t _n_stand_players;
+    size_t _n_bust_players;
     
     CardDeck _deck;
     size_t _n_deck;
     
 
 public:    
-    Game(): _n_players(0), _n_deck(1), _n_stand_players(0) {}
+    Game(): _n_players(0), _n_deck(1), _n_stand_players(0), _n_bust_players(0) {}
     void init();
     void set_n_player();
     void set_n_deck();

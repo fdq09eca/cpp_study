@@ -13,6 +13,7 @@
 
 #include "Hand.hpp"
 
+class Player;
 
 class Dealer{
     friend class Game;
@@ -22,11 +23,14 @@ class Dealer{
 
 public:
     Dealer(): _money(1000), _bust(false) {}
-    
     inline int point() const                   { return _hand.point(); }
-    inline void add_money(const int m)         { assert(m > 0); _money += m; }
-    inline void deduct_money(const int m)      { assert(m > 0); _money -= m; }
-    inline bool bust()                         { _bust = point() > 21; return _bust; }
+    inline void add_card(const Card& card)     { _hand.add(card); }
+    void add_money(const int m);
+    void deduct_money(const int m);
+    bool bust();
+    void draw();
+    void lose(Player& p);
+    void win(Player& p);
     std::ostream& print(std::ostream& s) const;
     
 };

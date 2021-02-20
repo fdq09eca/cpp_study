@@ -5,12 +5,13 @@
 //  Created by ChrisLam on 15/02/2021.
 //
 
+#include "Player.hpp"
 #include "CardDeck.hpp"
 #include "common.h"
 
+
 CardDeck::CardDeck(size_t n_deck_): _remain(0), _n_deck(n_deck_){
     _n_cards = 52 * _n_deck;
-//    Card _cards = Card[_n_cards];
     _cards = new Card[_n_cards];
     if (!_cards) {
         throw std::runtime_error("failed to new _cards");
@@ -72,6 +73,14 @@ void CardDeck::shuffle(size_t t_times) {
             std::swap(_cards[i], _cards[j]);
         }
     }
+}
+
+void CardDeck::draw_to(Player& p){
+    p.add_card(draw());
+}
+
+void CardDeck::draw_to(Dealer& d){
+    d.add_card(draw());
 }
 
 std::ostream& CardDeck::print(std::ostream& s) const{

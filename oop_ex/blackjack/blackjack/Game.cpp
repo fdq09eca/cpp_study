@@ -120,7 +120,8 @@ void Game::player_place_bet(Player& player) {
 
 void Game::players_place_bet() {
     for (int i = 0; i < _n_players; i++) {
-        player_place_bet(_players[i]);
+        Player& player = _players[i];
+        player_place_bet(player);
     }
 }
 
@@ -143,12 +144,13 @@ void Game::player_hit_or_stand(Player& player) {
         
         deal_to_player(player, 1);
         
-        if (player.bust()) {
-            std::cout << "\n== PLAYER" << player._id << " BUST ==\n";
-            player_lose(player);
-            remove(player); // bug here.
-            return;
-        }
+        if (player.bust()) return;
+//        if (player.bust()) {
+//            std::cout << "\n== PLAYER" << player._id << " BUST ==\n";
+//            player_lose(player);
+//            remove(player); // bug here.
+//            return;
+//        }
     }
 }
 
@@ -176,6 +178,13 @@ void Game::players_hit_or_stand(){
     for (int i = 0; i < _n_players; i++) {
         Player& player = _players[i];
         player_hit_or_stand(player);
+        if (player.bust()) {
+            i --;
+            std::cout << "\n== PLAYER" << player._id << " BUST ==\n";
+            player_lose(player);
+            remove(player); // bug here.
+            return;
+        }
     }
 }
 

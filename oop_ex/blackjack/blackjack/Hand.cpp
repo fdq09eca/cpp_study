@@ -14,6 +14,7 @@ Hand::~Hand() {
 
 void Hand::add(const Card& card) {
     if (_card_count >= MAX_CARD){
+
         assert(false);
         return;
     }

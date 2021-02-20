@@ -10,6 +10,8 @@
 
 #include <stdio.h>
 #include "Card.hpp"
+#include "Player.hpp"
+#include "Dealer.hpp"
 
 class CardDeck: public Card {
 private:
@@ -35,6 +37,9 @@ public:
 
 //    CardDeck& remove(const Card& card);
     Card draw();
+    void draw_to(Player& p);
+    void draw_to(Dealer& d);
+    
     void restart();
     void restart(size_t n_deck);
     void shuffle(size_t t_time = 1);
