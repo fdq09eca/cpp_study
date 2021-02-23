@@ -171,52 +171,31 @@ void draw_fill_triangle_radiate(SDL_Renderer* renderer, int x1, int y1, int x2, 
     }
 }
 
-//void fill_flat_triangle(SDL_Renderer* renderer, int x1, int y1, int x2, int y2, int x3, int y3){
-//    //
-//}
 
-void draw_fill_flat_bottom_triangle(SDL_Renderer* renderer, int x1, int y1, int x2, int y2, int x3, int y3){
-    
-    if (y2 < y1) {
-        std::swap(y1, y2);
-        std::swap(x1, x2);
-    }
-    
-    if (y3 < y1) {
-        std::swap(y1, y3);
-        std::swap(x1, x3);
-    }
-    
-    int y = abs(y1 - y3);
-    float m2 = (float) (x2 - x1)/(y2 - y1);
-    float m3 = (float) (x3 - x1)/(y3 - y1);
-    float dx2 = x1;
-    float dx3 = x1;
-    for (int i = 0; i <= y; i++) {
-        SDL_RenderDrawLine(renderer, (int) dx2, y1+i, (int) dx3, y1+i);
-        dx2 += m2;
-        dx3 += m3;
-    }
-}
-
-
-void draw_fill_flat_top_triangle(SDL_Renderer* renderer, int x1, int y1, int x2, int y2, int x3, int y3){
-    
-    
-    
-    int y = abs(y1 - y3);
-    float m2 = (float) (x2 - x1)/(y2 - y1);
-    float m3 = (float) (x3 - x1)/(y3 - y1);
-    float dx2 = x1;
-    float dx3 = x1;
-    for (int i = 0; i <= y; i++) {
-        SDL_RenderDrawLine(renderer, (int) dx2, y1 - i, (int)dx3, y1 - i);
-        dx2 -= m2;
-        dx3 -= m3;
-    }
-}
 
 void draw_fill_triangle_y_direction_scanline(SDL_Renderer* renderer, int x1, int y1, int x2, int y2, int x3, int y3){
+    struct Helper {
+        static void draw_fill_flat_triangle(SDL_Renderer* renderer, int x1, int y1, int x2, int y2, int x3, int y3){
+            assert(y2 == y3);
+            
+            
+            int dir = y1 > y3? -1 : 1;
+            int dy = (y3 - y1) * dir;
+            float m2 = (float) (x2 - x1)/(y2 - y1) * dir;
+            float m3 = (float) (x3 - x1)/(y3 - y1) * dir;
+            float dx2 = x1;
+            float dx3 = x1;
+            int y = y1;
+            for (int i = 0; i <= dy; i++) {
+                SDL_RenderDrawLine(renderer, (int) dx2, y, (int) dx3, y);
+                y += dir;
+                dx2 += m2;
+                dx3 += m3;
+            }
+        }
+    };
+    
+    
     if (y2 < y1) {
         std::swap(y1, y2);
         std::swap(x1, x2);
@@ -236,9 +215,11 @@ void draw_fill_triangle_y_direction_scanline(SDL_Renderer* renderer, int x1, int
     
     int y = y2;
     int x = x1 + ((float) (y2 - y1)/(y3 - y1)) * (float) (x3 - x1);
+    Helper::draw_fill_flat_triangle(renderer, x1, y1, x2, y2, x, y);
+    Helper::draw_fill_flat_triangle(renderer, x3, y3, x2, y2, x, y);
     
-    draw_fill_flat_bottom_triangle(renderer, x1, y1, x2, y2, x, y);
-    draw_fill_flat_top_triangle(renderer, x2, y2, x, y, x3, y3);
+//    draw_fill_flat_bottom_triangle(renderer, x1, y1, x2, y2, x, y);
+//    draw_fill_flat_top_triangle(renderer, x2, y2, x, y, x3, y3);
 }
 
 
