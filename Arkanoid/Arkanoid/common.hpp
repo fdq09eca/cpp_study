@@ -18,6 +18,7 @@ struct Point {
     float x = 0.0f;
     float y = 0.0f;
     
+    Point() = default;
     inline Point(float x_, float y_):x(x_), y(y_){};
 };
 

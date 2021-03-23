@@ -13,9 +13,9 @@
 
 struct Paddle {
     Point pos {SCREEN_W/2, SCREEN_H - 100};
-    int width = 2 * g_brick_width;
+    int width = 5 * g_brick_width;
     int height = g_brick_height / 2;
-    int speed = 500;
+    int speed = 1000;
     SDL_Color color = WHITE;
     
     

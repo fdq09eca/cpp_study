@@ -25,7 +25,7 @@ struct Grid {
         for (int r = 0; r < num_row ; r++) {
             for (int c = 0; c < num_col; c++) {
                 Brick& b = get_brick(c, r);
-                b.set_pos(c * g_brick_width, r * g_brick_height);
+                b.set_pos(c * g_brick_width + g_offset_x, r * g_brick_height + g_offset_y);
             }
         }
         

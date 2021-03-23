@@ -25,13 +25,13 @@ int main(int argc, const char * argv[]) {
     
     if (SDL_CreateWindowAndRenderer(SCREEN_W, SCREEN_H, 0, &window, &g_renderer) != 0) return -1;
     
-    SDL_bool done = SDL_FALSE;
+    bool running = true;
     Uint32 last_time = SDL_GetTicks();
     Uint32 curr_time = last_time;
     
     
     Player player;
-    while (!done) {
+    while (running) {
         if (!startTime) {
             // get the time in ms passed from the moment the program started
             startTime = SDL_GetTicks();
@@ -44,8 +44,17 @@ int main(int argc, const char * argv[]) {
         last_time = curr_time;
         curr_time = SDL_GetTicks();
         float delta_time = (curr_time - last_time)/1000.0f;
+        delta_time = std::min(0.05f, delta_time);
+        const int n = 10;
         
-        if (!player.update(delta_time)) break;
+        for (int t = 0; t < n; t++) {
+            running = player.update(delta_time / n);
+            if (!running) break;
+        }
+        
+        
+        
+        
         
         player.render();
 //
@@ -77,4 +86,4 @@ int main(int argc, const char * argv[]) {
     }
     SDL_Quit();
     return 0;
-}
+};

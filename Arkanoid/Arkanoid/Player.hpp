@@ -26,9 +26,22 @@ struct Player {
         paddle.move(dx, delta_time);
     }
     
+    void collision(){
+        ball.collision(paddle);
+        for (int r = 0; r < grid.num_row; r ++) {
+            for (int c = 0; c < grid.num_col; c ++) {
+                Brick& b = grid.get_brick(c, r);
+                ball.collision(b);
+            }
+        }        
+    }
+    
     bool update(float delta_time) {
         SDL_Event event;
+        collision();
         ball.update(delta_time);
+        
+        
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
                 case SDL_KEYDOWN:
@@ -61,7 +74,6 @@ struct Player {
         grid.draw();
         paddle.draw();
         ball.draw();
-        
     }
 };
 
