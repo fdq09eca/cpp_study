@@ -13,7 +13,7 @@
 
 struct Paddle {
     Point pos {SCREEN_W/2, SCREEN_H - 100};
-    int width = 5 * g_brick_width;
+    int width = SCREEN_W/3;
     int height = g_brick_height / 2;
     int speed = 1000;
     SDL_Color color = WHITE;
@@ -21,7 +21,6 @@ struct Paddle {
     
     void draw(){
         SDL_Rect rect = {(int) pos.x, (int) pos.y, width, height};
-
         SDL_SetRenderDrawColor(g_renderer, color.r, color.g, color.b, color.a);
         SDL_RenderFillRect(g_renderer, &rect);
     }

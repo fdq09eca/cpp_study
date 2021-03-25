@@ -45,16 +45,12 @@ int main(int argc, const char * argv[]) {
         curr_time = SDL_GetTicks();
         float delta_time = (curr_time - last_time)/1000.0f;
         delta_time = std::min(0.05f, delta_time);
-        const int n = 10;
+        const int n = 5;
         
         for (int t = 0; t < n; t++) {
             running = player.update(delta_time / n);
             if (!running) break;
         }
-        
-        
-        
-        
         
         player.render();
 //
@@ -71,9 +67,7 @@ int main(int argc, const char * argv[]) {
         if (delta > timePerFrame) {
             fps = 1000 / delta;
         }
-        
-        //        printf("FPS is: %i \n", fps);
-        
+           
         startTime = endTime;
         endTime = SDL_GetTicks();
         

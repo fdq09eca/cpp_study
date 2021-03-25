@@ -13,13 +13,15 @@
 #include "Brick.hpp"
 #include "Paddle.hpp"
 
-struct Ball {    
-    Point pos{0, 0};
-    int radius = 5;
-    Point velocity{800, -100};
-    SDL_Color color = RED;
+struct Ball {
     static const int history_count = 100;
+    int radius = 5;
+    Point pos{0, 0};
+    Point velocity{800, -300};
     Point history[history_count];
+    SDL_Color color = RED;
+    
+    
     int history_idx = 0;
     
     void set_pos(int x, int y){
@@ -27,15 +29,20 @@ struct Ball {
         pos.y = y;
     };
     
-    void collision(Brick& b) {
-        if (b.hp <= 0) return;
+    void move(int dx, int dy) {
+        pos.x += dx;
+        pos.y += dy;
+    }
+    
+    bool collision(Brick& b) {
+        if (b.hp <= 0) return false;
         
         float bx0 = b.pos.x;
         float bx1 = b.pos.x + b.width;
         float by0 = b.pos.y;
         float by1 = b.pos.y + b.height;
 
-        if (!(pos.x >= bx0 && pos.x <= bx1 && pos.y >= by0 && pos.y <= by1)) return;
+        if (!(pos.x >= bx0 && pos.x <= bx1 && pos.y >= by0 && pos.y <= by1)) return false;
         
         b.hp--;
 
@@ -52,7 +59,7 @@ struct Ball {
                 pos.x = bx1;
                 velocity.x = -velocity.x;
             }
-            return;
+            return true;
         }
 
         if (velocity.x < 0 && velocity.y > 0) {
@@ -63,7 +70,7 @@ struct Ball {
                 pos.x = bx1;
                 velocity.x = -velocity.x;
             }
-            return;
+            return true;
         }
 
         if (velocity.x > 0 && velocity.y > 0) {
@@ -74,7 +81,7 @@ struct Ball {
                 pos.x = bx0;
                 velocity.x = -velocity.x;
             }
-            return;
+            return true;
         }
 
         if (velocity.x > 0 && velocity.y < 0) {
@@ -85,9 +92,9 @@ struct Ball {
                 pos.x = bx0;
                 velocity.x = -velocity.x;
             }
-            return;
+            return true;
         }
-                
+        return false;
     }
     
     void collision(Paddle& b) {
@@ -175,18 +182,27 @@ struct Ball {
         
     }
     
+    void reset_history(){
+        for (int i = 0; i < history_count; i++) {
+            history[i].x = pos.x;
+            history[i].y = pos.y;
+        }
+    }
+    
     void draw() {
+        
+        for (int i = 0; i < history_count; i++){
+            Point& hist = history[i];
+            SDL_Rect rect = {(int) hist.x - radius, (int) hist.y - radius, radius * 2, radius * 2};
+            SDL_SetRenderDrawColor(g_renderer, 0, 255/2, 255/2, 255);
+            SDL_RenderFillRect(g_renderer, &rect);
+        }
+        
         SDL_Rect rect = {(int) pos.x - radius, (int) pos.y - radius, radius * 2, radius * 2};
         SDL_SetRenderDrawColor(g_renderer, color.r, color.g, color.b, color.a);
         SDL_RenderFillRect(g_renderer, &rect);
         
-        for (int i = 0; i < history_count; i++){
-            
-            SDL_Rect rect = {(int) history[i].x - radius, (int) history[i].y - radius, radius * 2, radius * 2};
-            SDL_SetRenderDrawColor(g_renderer, 0, 255/2, 255/2, 255);
-            SDL_RenderFillRect(g_renderer, &rect);
-            
-        }
+        
     }
 };
 

@@ -11,24 +11,27 @@
 #include <stdio.h>
 #include "Brick.hpp"
 
-
-
-
-
 struct Grid {
-    static const int num_row = 7;
-    static const int num_col = 16;
+    static const int num_row = 8;
+    static const int num_col = 12;
+    const int brick_count = num_row * num_col;
     Point pos{0,0};
     Brick data[num_row][num_col];
     
     Grid(){
+        init();
+    }
+    
+    void init(){
         for (int r = 0; r < num_row ; r++) {
             for (int c = 0; c < num_col; c++) {
                 Brick& b = get_brick(c, r);
                 b.set_pos(c * g_brick_width + g_offset_x, r * g_brick_height + g_offset_y);
+                
+                b.hp = (num_row - r) % b.max_hp;
+                if (!b.hp) b.hp = 1;
             }
         }
-        
     }
 
     
