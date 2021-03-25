@@ -38,6 +38,23 @@ struct Point {
     
     Point() = default;
     inline Point(float x_, float y_):x(x_), y(y_){};
+    
+    float distance(Point p) {
+        float dx = x - p.x;
+        float dy = y - p.y;
+        return sqrt(dx * dx + dy * dy);
+    }
+    
+    bool is_between(Point p1, Point p2) {
+        return fabs(p1.distance(p2) - distance(p1) - distance(p2)) < FLT_EPSILON;
+    }
+    
+    void draw(int size = 10){
+        SDL_Rect rect = {(int) x, (int) y, size, size};
+        SDL_SetRenderDrawColor(g_renderer, 255/2, 255/2, 0, 255);
+        SDL_RenderFillRect(g_renderer, &rect);
+    }
+    
 };
 
 struct Line {
@@ -50,11 +67,10 @@ struct Line {
         float dy = p2.y - p1.y;
         float dx = p2.x - p1.x;
         slope = dy / dx;
-        c = slope * p1.x + p1.y;
+        c =  - slope * p1.x + p1.y;
     }
     
     Point given_x(float x) {
-        assert(slope);
         float y = slope * x + c;
         return Point(x, y);
     }
@@ -66,18 +82,27 @@ struct Line {
     }
     
     bool has_point(Point p) {
-        return p.y == given_x(p.x).y;
+        return fabs(p.y - given_x(p.x).y) < FLT_EPSILON;
     }
     
     bool is_intersect(Line l) {
-        return l.slope != slope;
+        return fabs(l.slope - slope) > FLT_EPSILON;
     }
     
     Point interscetion(Line l) {
+        float d = fabs(l.slope - slope);
+        bool r = d < FLT_EPSILON;
+        std::cout << "l.slope - slope: " << d <<"\n";
+        
         assert(is_intersect(l));
         float x = (c - l.c) / (l.slope - slope);
         return given_x(x);
     };
+    
+    void draw() {
+        SDL_SetRenderDrawColor(g_renderer, 255, 0, 0, 255);
+        SDL_RenderDrawLine(g_renderer, p1.x, p1.y, p2.x, p2.y);
+    }
 };
 
 struct Life {
@@ -234,6 +259,10 @@ struct ScoreBoard {
 };
 
 inline int clamp(int value, int min, int max) {
+    return value < min? min : (value > max? max: value);
+}
+
+inline float clamp(float value, float min, float max) {
     return value < min? min : (value > max? max: value);
 }
 

@@ -45,8 +45,8 @@ struct Player {
         paddle.move(dx, delta_time);
     }
     
-    void collision(){
-        ball.collision(paddle);
+    void collision(float delta_time){
+        ball.collision(paddle, delta_time);
         for (int r = 0; r < grid.num_row; r ++) {
             for (int c = 0; c < grid.num_col; c ++) {
                 Brick& b = grid.get_brick(c, r);
@@ -116,7 +116,7 @@ struct Player {
             if (state[SDL_SCANCODE_RIGHT]) move(1, delta_time);
             if (ball.pos.y > SCREEN_H) die();
             if (start) {
-                collision();
+                collision(delta_time);
                 ball.update(delta_time);
             }
             if (won()) restart();

@@ -29,6 +29,11 @@ struct Ball {
         pos.y = y;
     };
     
+    void init(){
+        velocity.x = 800;
+        velocity.y = -300;
+    }
+    
     void move(int dx, int dy) {
         pos.x += dx;
         pos.y += dy;
@@ -97,61 +102,35 @@ struct Ball {
         return false;
     }
     
-    void collision(Paddle& b) {
+    void collision(Paddle& p, float delta_time) {
+
+        float dx = velocity.x * delta_time;
+        float dy = velocity.y * delta_time;
+        Point ball_next_pos(pos.x + dx, pos.y + dy);
+        Line ball_ray(pos, ball_next_pos);
         
-        float bx0 = b.pos.x;
-        float bx1 = b.pos.x + b.width;
-        float by0 = b.pos.y;
-        float by1 = b.pos.y + b.height;
-
-        if (!(pos.x >= bx0 && pos.x <= bx1 && pos.y >= by0 && pos.y <= by1)) return;
+        ball_ray.draw();
         
-        float dy0 = abs(pos.y - by0);
-        float dy1 = abs(pos.y - by1);
-        float dx0 = abs(pos.x - bx0);
-        float dx1 = abs(pos.x - bx1);
+        for (int i = 0; i < 100; i++) {
+            ball_ray.given_x(ball_ray.p1.x + i).draw();
+        }
         
-        if (velocity.x < 0 && velocity.y < 0) {
-            if (dy1 < dx1) {
-                pos.y = by1;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx1;
-                velocity.x = -velocity.x;
-            }
-            return;
-        }
-
-        if (velocity.x < 0 && velocity.y > 0) {
-            if (dy0 < dx1) {
-                pos.y = by0;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx1;
-                velocity.x = -velocity.x;
-            }
-            return;
-        }
-
-        if (velocity.x > 0 && velocity.y > 0) {
-            if (dy0 < dx0) {
-                pos.y = by0;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx0;
-                velocity.x = -velocity.x;
-            }
-            return;
-        }
-
-        if (velocity.x > 0 && velocity.y < 0) {
-            if (dy1 < dx0) {
-                pos.y = by1;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx0;
-                velocity.x = -velocity.x;
-            }
+        Point p_top_left(p.pos.x , p.pos.y);
+        Point p_top_right(p.pos.x + p.width , p.pos.y);
+        Point p_bottom_left(p.pos.x , p.pos.y + p.height);
+        Point p_bottom_right(p.pos.x + p.width , p.pos.y + p.height);
+        
+        Line p_top(p_top_left, p_top_right);
+        Line p_left(p_top_left, p_bottom_left);
+        Line p_right(p_top_right, p_bottom_right);
+        Line p_bottom(p_bottom_left, p_bottom_right);
+        
+        if (ball_ray.interscetion(p_top).is_between(pos, ball_next_pos)) {
+            Point i = ball_ray.interscetion(p_top);
+            i.draw(50);
+            std::cout << "ball_ray.interscetion(p_top): " <<i.x<<","<<i.y<<"\n";
+            pos = ball_ray.interscetion(p_top);
+            velocity.y = - velocity.y;
             return;
         }
     }

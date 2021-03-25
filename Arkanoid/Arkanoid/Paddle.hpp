@@ -15,7 +15,7 @@ struct Paddle {
     Point pos {SCREEN_W/2, SCREEN_H - 100};
     int width = SCREEN_W/3;
     int height = g_brick_height / 2;
-    int speed = 1000;
+    float speed = 1000.0f;
     SDL_Color color = WHITE;
     
     
@@ -25,9 +25,9 @@ struct Paddle {
         SDL_RenderFillRect(g_renderer, &rect);
     }
     
-    void move(int dx, float delta_time){
-        dx *= speed * delta_time ;
-        pos.x = clamp( pos.x + dx, 0, SCREEN_W - width);
+    void move(float dx, float delta_time){
+        dx *= speed * delta_time;
+        pos.x = clamp( pos.x + dx, 0.0f, (float) SCREEN_W - width);
     }
 
 };
