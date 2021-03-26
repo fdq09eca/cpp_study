@@ -12,23 +12,15 @@
 #include "common.hpp"
 
 struct Paddle {
-    Point pos {SCREEN_W/2, SCREEN_H - 100};
-    float width = SCREEN_W/3;
-    float height = g_brick_height / 2;
-    float speed = 1000.0f;
-    SDL_Color color = WHITE;
+    float width     =   SCREEN_W / 3;
+    float height    =   g_brick_height / 2;
+    float speed     =   1000.0f;
+    Point pos       {   SCREEN_W / 2, SCREEN_H - 100    };
+    SDL_Color color =   WHITE;
     
     
-    void draw(){
-        SDL_Rect rect = {(int) pos.x, (int) pos.y, (int) width, (int) height};
-        SDL_SetRenderDrawColor(g_renderer, color.r, color.g, color.b, color.a);
-        SDL_RenderFillRect(g_renderer, &rect);
-    }
-    
-    void move(float dx, float delta_time){
-        dx *= speed * delta_time;
-        pos.x = clamp( pos.x + dx, 0.0f, (float) SCREEN_W - width);
-    }
+    void draw();
+    void move(float dx, float delta_time);
 
 };
 
