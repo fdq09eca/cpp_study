@@ -50,7 +50,7 @@ struct Player {
         for (int r = 0; r < grid.num_row; r ++) {
             for (int c = 0; c < grid.num_col; c ++) {
                 Brick& b = grid.get_brick(c, r);
-                if (ball.collision(b)) {
+                if (ball.collision(b, delta_time)) {
                     score++;
                 };
             }

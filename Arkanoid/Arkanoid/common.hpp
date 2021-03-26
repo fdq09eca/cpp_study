@@ -18,10 +18,10 @@ const SDL_Color WHITE = {255, 255, 255, 255};
 const SDL_Color BLACK = {0, 0, 0, 255};
 const SDL_Color RED = {255, 0, 0, 255};
 const SDL_Color BLUE = {0, 0, 255, 255};
-const int g_brick_width = SCREEN_W/15;
-const int g_brick_height = 20;
-const int g_offset_x = 100;
-const int g_offset_y = 100;
+const float g_brick_width = SCREEN_W/15;
+const float g_brick_height = 20;
+const float g_offset_x = 100.0f;
+const float g_offset_y = 100.0f;
 
 const int g_life_width = SCREEN_W/20;
 const int g_life_height = 5;

@@ -16,8 +16,8 @@
 struct Brick {
     Point pos{0,0};
     static const int max_hp = 4;
-    int width = g_brick_width;
-    int height = g_brick_height;
+    float width = g_brick_width;
+    float height = g_brick_height;
     int hp = 1;
     SDL_Color border_color = WHITE;
     
@@ -31,7 +31,7 @@ struct Brick {
     
     void draw() {
         if (hp <= 0) return;
-        SDL_Rect rect = {(int) pos.x, (int) pos.y, width, height};
+        SDL_Rect rect = {(int) pos.x, (int) pos.y, (int)width, (int)height};
 
         SDL_SetRenderDrawColor(g_renderer, 51 * (max_hp - hp), 51 * (max_hp - hp), 255, 255);
         SDL_RenderFillRect(g_renderer, &rect);

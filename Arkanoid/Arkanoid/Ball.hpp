@@ -34,72 +34,109 @@ struct Ball {
         velocity.y = -300;
     }
     
-    void move(int dx, int dy) {
+    void move(int dx, int dy, Uint32 delta_time) {
         pos.x += dx;
         pos.y += dy;
     }
     
-    bool collision(Brick& b) {
-        if (b.hp <= 0) return false;
-        
-        float bx0 = b.pos.x;
-        float bx1 = b.pos.x + b.width;
-        float by0 = b.pos.y;
-        float by1 = b.pos.y + b.height;
+    bool collision(Brick& p, float delta_time) {
+        if (p.hp <= 0) return false;
 
-        if (!(pos.x >= bx0 && pos.x <= bx1 && pos.y >= by0 && pos.y <= by1)) return false;
-        
-        b.hp--;
+        float b_nx = pos.x + velocity.x * delta_time;
+        float b_ny = pos.y + velocity.y * delta_time;
+        Point ball_next_pos(b_nx, b_ny);
 
-        float dy0 = abs(pos.y - by0);
-        float dy1 = abs(pos.y - by1);
-        float dx0 = abs(pos.x - bx0);
-        float dx1 = abs(pos.x - bx1);
-        
-        if (velocity.x < 0 && velocity.y < 0) {
-            if (dy1 < dx1) {
-                pos.y = by1;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx1;
-                velocity.x = -velocity.x;
-            }
+        Point p_top_left    (p.pos.x            , p.pos.y);
+        Point p_top_right   (p.pos.x + p.width  , p.pos.y);
+        Point p_btm_left    (p.pos.x            , p.pos.y + p.height);
+        Point p_btm_right   (p.pos.x + p.width  , p.pos.y + p.height);
+
+        Line p_top          (p_top_left, p_top_right);
+        Line p_left         (p_top_left, p_btm_left);
+        Line p_right        (p_top_right, p_btm_right);
+        Line p_btm          (p_btm_left, p_btm_right);
+
+
+        Line ball_ray       (pos, ball_next_pos);
+        Point intersection;
+
+        if (ball_ray.intersection(p_top, intersection) || ball_ray.intersection(p_btm, intersection)) {
+            velocity.y = -velocity.y;
+            pos = intersection;
+            p.hp--;
             return true;
         }
 
-        if (velocity.x < 0 && velocity.y > 0) {
-            if (dy0 < dx1) {
-                pos.y = by0;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx1;
-                velocity.x = -velocity.x;
-            }
-            return true;
-        }
-
-        if (velocity.x > 0 && velocity.y > 0) {
-            if (dy0 < dx0) {
-                pos.y = by0;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx0;
-                velocity.x = -velocity.x;
-            }
-            return true;
-        }
-
-        if (velocity.x > 0 && velocity.y < 0) {
-            if (dy1 < dx0) {
-                pos.y = by1;
-                velocity.y = -velocity.y;
-            } else {
-                pos.x = bx0;
-                velocity.x = -velocity.x;
-            }
+        if (ball_ray.intersection(p_left, intersection) || ball_ray.intersection(p_right, intersection)) {
+            velocity.x = -velocity.x;
+            pos = intersection;
+            p.hp--;
             return true;
         }
         return false;
+        
+        
+        
+//        if (b.hp <= 0) return false;
+//
+//        float bx0 = b.pos.x;
+//        float bx1 = b.pos.x + b.width;
+//        float by0 = b.pos.y;
+//        float by1 = b.pos.y + b.height;
+//
+//        if (!(pos.x >= bx0 && pos.x <= bx1 && pos.y >= by0 && pos.y <= by1)) return false;
+//
+//        b.hp--;
+//
+//        float dy0 = fabs(pos.y - by0);
+//        float dy1 = fabs(pos.y - by1);
+//        float dx0 = fabs(pos.x - bx0);
+//        float dx1 = fabs(pos.x - bx1);
+//
+//        if (velocity.x < 0 && velocity.y < 0) {
+//            if (dy1 < dx1) {
+//                pos.y = by1;
+//                velocity.y = -velocity.y;
+//            } else {
+//                pos.x = bx1;
+//                velocity.x = -velocity.x;
+//            }
+//            return true;
+//        }
+//
+//        if (velocity.x < 0 && velocity.y > 0) {
+//            if (dy0 < dx1) {
+//                pos.y = by0;
+//                velocity.y = -velocity.y;
+//            } else {
+//                pos.x = bx1;
+//                velocity.x = -velocity.x;
+//            }
+//            return true;
+//        }
+//
+//        if (velocity.x > 0 && velocity.y > 0) {
+//            if (dy0 < dx0) {
+//                pos.y = by0;
+//                velocity.y = -velocity.y;
+//            } else {
+//                pos.x = bx0;
+//                velocity.x = -velocity.x;
+//            }
+//            return true;
+//        }
+//
+//        if (velocity.x > 0 && velocity.y < 0) {
+//            if (dy1 < dx0) {
+//                pos.y = by1;
+//                velocity.y = -velocity.y;
+//            } else {
+//                pos.x = bx0;
+//                velocity.x = -velocity.x;
+//            }
+//            return true;
+//        }
+//        return false;
     }
     
     void collision(Paddle& p, float delta_time) {
@@ -151,6 +188,7 @@ struct Ball {
         history[history_idx %= history_count] = pos;
         history_idx++;
         
+        
         pos.x += velocity.x * delta_time;
         pos.y += velocity.y * delta_time;
         
@@ -175,8 +213,6 @@ struct Ball {
         SDL_Rect rect = {(int) pos.x - radius, (int) pos.y - radius, radius * 2, radius * 2};
         SDL_SetRenderDrawColor(g_renderer, color.r, color.g, color.b, color.a);
         SDL_RenderFillRect(g_renderer, &rect);
-        
-        
     }
 };
 
