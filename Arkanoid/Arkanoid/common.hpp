@@ -31,6 +31,8 @@ const int g_life_pos_y = SCREEN_H - g_life_offset_y;
 
 extern SDL_Renderer* g_renderer;
 
+
+
 struct Point {
     
     float x = 0.0f;
@@ -57,6 +59,11 @@ struct Point {
     
 };
 
+
+inline bool float_eq(float a, float b) {
+    return fabs(a - b) < FLT_EPSILON;
+}
+
 struct Line {
     Point p1;
     Point p2;
@@ -69,34 +76,42 @@ struct Line {
         slope = dy / dx;
         c =  - slope * p1.x + p1.y;
     }
+
     
-    Point given_x(float x) {
-        float y = slope * x + c;
-        return Point(x, y);
-    }
     
-    Point given_y(float y) {
-        assert(slope);
-        float x = (y - c) / slope;
-        return Point(x, y);
-    }
-    
-    bool has_point(Point p) {
-        return fabs(p.y - given_x(p.x).y) < FLT_EPSILON;
-    }
-    
-    bool is_intersect(Line l) {
-        return fabs(l.slope - slope) > FLT_EPSILON;
-    }
-    
-    Point interscetion(Line l) {
-        float d = fabs(l.slope - slope);
-        bool r = d < FLT_EPSILON;
-        std::cout << "l.slope - slope: " << d <<"\n";
+    bool intersection(Line l, Point& interscetion) {
+        float x1 =   p1.x;      float y1 =   p1.y;
+        float x2 =   p2.x;      float y2 =   p2.y;
         
-        assert(is_intersect(l));
-        float x = (c - l.c) / (l.slope - slope);
-        return given_x(x);
+        float x3 = l.p1.x;      float y3 = l.p1.y;
+        float x4 = l.p2.x;      float y4 = l.p2.y;
+        
+        float denom     = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
+        float numer_a   = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
+        float numer_b   = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
+        
+        bool parallel = float_eq(denom, 0.0f);
+        bool coincident = float_eq(numer_a, 0.0f) && float_eq(numer_b, 0.0f) && float_eq(denom, 0.0f);
+        
+        if (parallel) return false;
+        
+        if (coincident) {
+            interscetion.x = (x1 + x2) / 2;
+            interscetion.y = (y1 + y2) / 2;
+            return true;
+        }
+        
+        float u_a = numer_a / denom;
+        float u_b = numer_b / denom;
+        
+        bool out_of_range = u_a < 0 || u_a > 1 || u_b < 0  || u_b > 1;
+        
+        if (out_of_range) return false;
+        
+        interscetion.x = x1 + u_a * (x2 - x1);
+        interscetion.y = y1 + u_a * (y2 - y1);
+        
+        return true;
     };
     
     void draw() {

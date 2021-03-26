@@ -13,14 +13,14 @@
 
 struct Paddle {
     Point pos {SCREEN_W/2, SCREEN_H - 100};
-    int width = SCREEN_W/3;
-    int height = g_brick_height / 2;
+    float width = SCREEN_W/3;
+    float height = g_brick_height / 2;
     float speed = 1000.0f;
     SDL_Color color = WHITE;
     
     
     void draw(){
-        SDL_Rect rect = {(int) pos.x, (int) pos.y, width, height};
+        SDL_Rect rect = {(int) pos.x, (int) pos.y, (int) width, (int) height};
         SDL_SetRenderDrawColor(g_renderer, color.r, color.g, color.b, color.a);
         SDL_RenderFillRect(g_renderer, &rect);
     }

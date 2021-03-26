@@ -103,35 +103,30 @@ struct Ball {
     }
     
     void collision(Paddle& p, float delta_time) {
-
-        float dx = velocity.x * delta_time;
-        float dy = velocity.y * delta_time;
-        Point ball_next_pos(pos.x + dx, pos.y + dy);
-        Line ball_ray(pos, ball_next_pos);
+        float b_nx = pos.x + velocity.x * delta_time;
+        float b_ny = pos.y + velocity.y * delta_time;
+        Point ball_next_pos(b_nx, b_ny);
         
-        ball_ray.draw();
-        
-        for (int i = 0; i < 100; i++) {
-            ball_ray.given_x(ball_ray.p1.x + i).draw();
-        }
-        
-        Point p_top_left(p.pos.x , p.pos.y);
-        Point p_top_right(p.pos.x + p.width , p.pos.y);
-        Point p_bottom_left(p.pos.x , p.pos.y + p.height);
-        Point p_bottom_right(p.pos.x + p.width , p.pos.y + p.height);
+        Point p_top_left(p.pos.x, p.pos.y);
+        Point p_top_right(p.pos.x + p.width, p.pos.y);
+        Point p_btm_left(p.pos.x, p.pos.y + p.height);
+        Point p_btm_right(p.pos.x + p.width, p.pos.y + p.height);
         
         Line p_top(p_top_left, p_top_right);
-        Line p_left(p_top_left, p_bottom_left);
-        Line p_right(p_top_right, p_bottom_right);
-        Line p_bottom(p_bottom_left, p_bottom_right);
+        Line p_left(p_top_left, p_btm_left);
+        Line p_right(p_top_right, p_btm_right);
+//        Line p_btm(p_btm_left, p_btm_right);
         
-        if (ball_ray.interscetion(p_top).is_between(pos, ball_next_pos)) {
-            Point i = ball_ray.interscetion(p_top);
-            i.draw(50);
-            std::cout << "ball_ray.interscetion(p_top): " <<i.x<<","<<i.y<<"\n";
-            pos = ball_ray.interscetion(p_top);
-            velocity.y = - velocity.y;
-            return;
+        Line ball_ray(pos, ball_next_pos);
+        Point intersection;
+        
+        bool ball_hits_paddle = ball_ray.intersection(p_top, intersection)
+                             || ball_ray.intersection(p_left, intersection)
+                             || ball_ray.intersection(p_right, intersection);
+        
+        if (ball_hits_paddle) {
+            pos = intersection;
+            velocity.y = -velocity.y;
         }
     }
     
