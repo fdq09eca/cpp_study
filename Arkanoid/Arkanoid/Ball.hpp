@@ -90,19 +90,21 @@ struct Ball {
         Line p_top      (p_top_left,    p_top_right );
         Line p_left     (p_top_left,    p_btm_left  );
         Line p_right    (p_top_right,   p_btm_right );
-//        Line p_btm(p_btm_left, p_btm_right);
+        Line p_btm(p_btm_left, p_btm_right);
         
         Line ball_ray(pos, ball_next_pos);
         Point intersection;
         
-        bool ball_hits_paddle = ball_ray.intersection(p_top,    intersection)
-                             || ball_ray.intersection(p_left,   intersection)
-                             || ball_ray.intersection(p_right,  intersection);
+        bool ball_hits_paddle   =   ball_ray.intersection(p_top,     intersection)
+                                ||  ball_ray.intersection(p_left,    intersection)
+                                ||  ball_ray.intersection(p_right,   intersection)
+                                ||  ball_ray.intersection(p_btm,     intersection);
         
         if (ball_hits_paddle) {
             pos         = intersection;
             velocity.y  = -velocity.y;
         }
+        
     }
     
     void update(float delta_time) {
