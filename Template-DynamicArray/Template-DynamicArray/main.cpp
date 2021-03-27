@@ -6,19 +6,11 @@
 //
 
 #include <iostream>
-#include "DynamicArray.hpp"
+#include "Test.hpp"
+
 
 int main(int argc, const char * argv[]) {
-    DynamicArray arr;
-    
-    for (int i = 0; i < 20; i += 2) {
-        arr.append(i);
-    }
-    
-    for (int i = 0; i < 20; i += 2) {
-        arr.append(i);
-    }
-    
-    std::cout << arr;
+    Test test;
+    test.run();
     return 0;
 }
