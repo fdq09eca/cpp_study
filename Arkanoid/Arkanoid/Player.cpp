@@ -7,17 +7,12 @@
 
 #include "Player.hpp"
 
-Player::Player(){
-    spawn_ball();
-}
+Player::Player()    {   spawn_ball();   }
 
-void Player::init(){
-    grid.init();
-    score = 0;
-    life_count = 3;
-    spawn_ball();
-    start = false;
-    pause = false;
+void Player::init() {
+    grid.init();        spawn_ball();
+    life_count = 3;     score = 0;
+    start = false;      pause = false;
 }
 
 void Player::restart(){
