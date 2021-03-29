@@ -5,20 +5,20 @@
 
 ## objective
 
-- [ x ] write an Dynamic array for `int` 
-- [ x ] use `Template` to write `DynamicArray`
-    - [ x ] `DynArray<int> intArr;`
-    - [ x ] `DynArray<float> floatArr;`
-    - [ o ] `DynArray<MyStruct> structArr;` 
+- [x] write an Dynamic array for `int` 
+- [x] use `Template` to write `DynamicArray`
+    - [x] `DynArray<int> intArr;`
+    - [x] `DynArray<float> floatArr;`
+    - [o] `DynArray<MyStruct> structArr;` 
 
 ## spec
 
-- [ x ]  `void append(int v)`
-- [ x ]  `void append(const DynamicArray& arr)`
-- [ x ]  `sort()` selection sort implementation
-- [ x ] `int* search(int v)`  binary search implementation
-- [ x ] `void del(int idx)`
-- [ x ] `void reverse()`
+- [x]  `void append(int v)`
+- [x]  `void append(const DynamicArray& arr)`
+- [x]  `sort()` selection sort implementation
+- [x] `int* search(int v)`  binary search implementation
+- [x] `void del(int idx)`
+- [x] `void reverse()`
 
 ## questions
 
