@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F53B4171260EF845002EDE58 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F53B416F260EF845002EDE58 /* Test.cpp */; };
+		F53B417526117CBA002EDE58 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F53B417326117CBA002EDE58 /* common.cpp */; };
 		F5C24B0F260EC5C500200B60 /* DynamicArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5C24B0D260EC5C500200B60 /* DynamicArray.cpp */; };
 		F5CCB588260DD6D1008FFE40 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5CCB587260DD6D1008FFE40 /* main.cpp */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		F53B416F260EF845002EDE58 /* Test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
 		F53B4170260EF845002EDE58 /* Test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
+		F53B417326117CBA002EDE58 /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		F53B417426117CBA002EDE58 /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
 		F5C24B0D260EC5C500200B60 /* DynamicArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DynamicArray.cpp; sourceTree = "<group>"; };
 		F5C24B0E260EC5C500200B60 /* DynamicArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DynamicArray.hpp; sourceTree = "<group>"; };
 		F5C24B11260EEB0C00200B60 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 			children = (
 				F5CCB587260DD6D1008FFE40 /* main.cpp */,
 				F5C24B11260EEB0C00200B60 /* README.md */,
+				F53B417326117CBA002EDE58 /* common.cpp */,
+				F53B417426117CBA002EDE58 /* common.hpp */,
 				F5C24B0D260EC5C500200B60 /* DynamicArray.cpp */,
 				F5C24B0E260EC5C500200B60 /* DynamicArray.hpp */,
 				F53B416F260EF845002EDE58 /* Test.cpp */,
@@ -130,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F53B417526117CBA002EDE58 /* common.cpp in Sources */,
 				F53B4171260EF845002EDE58 /* Test.cpp in Sources */,
 				F5CCB588260DD6D1008FFE40 /* main.cpp in Sources */,
 				F5C24B0F260EC5C500200B60 /* DynamicArray.cpp in Sources */,

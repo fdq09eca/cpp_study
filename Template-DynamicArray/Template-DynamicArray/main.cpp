@@ -10,7 +10,6 @@
 
 
 int main(int argc, const char * argv[]) {
-    Test test;
-    test.run();
+    {   Test test;  test.run(); }
     return 0;
 }
