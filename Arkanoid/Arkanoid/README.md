@@ -6,7 +6,7 @@ A simple clone of ankanoid
 
 - <kbd>→</kbd> Paddle right
 - <kbd>←</kbd> Paddle left
-- <kbd>R</kbd> Restart
+- <kbd>r</kbd> Restart
 - <kbd>Space</kbd> Pause
 
 ## further improvement

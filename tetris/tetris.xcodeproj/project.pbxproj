@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5A0DDD326174C6F000D6A82 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDD126174C6F000D6A82 /* common.cpp */; };
+		F5A0DDD726174CB2000D6A82 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDD526174CB2000D6A82 /* Point.cpp */; };
+		F5A0DDDB26174CD6000D6A82 /* Cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDD926174CD6000D6A82 /* Cell.cpp */; };
+		F5A0DDDF26174D47000D6A82 /* Tetrimino.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDDD26174D47000D6A82 /* Tetrimino.cpp */; };
+		F5A0DDE326174D89000D6A82 /* GameBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDE126174D89000D6A82 /* GameBoard.cpp */; };
+		F5A0DDE726174DF8000D6A82 /* Tetriminos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDE526174DF8000D6A82 /* Tetriminos.cpp */; };
+		F5A0DDEE26174EA5000D6A82 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDEC26174EA5000D6A82 /* Player.cpp */; };
 		F5A87ADD260129E300BF1411 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87ADC260129E300BF1411 /* main.cpp */; };
 		F5A87AE72606778300BF1411 /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87AE52606778300BF1411 /* Shape.cpp */; };
 /* End PBXBuildFile section */
@@ -24,6 +31,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F5A0DDD126174C6F000D6A82 /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		F5A0DDD226174C6F000D6A82 /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
+		F5A0DDD526174CB2000D6A82 /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
+		F5A0DDD626174CB2000D6A82 /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
+		F5A0DDD926174CD6000D6A82 /* Cell.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cell.cpp; sourceTree = "<group>"; };
+		F5A0DDDA26174CD6000D6A82 /* Cell.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cell.hpp; sourceTree = "<group>"; };
+		F5A0DDDD26174D47000D6A82 /* Tetrimino.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Tetrimino.cpp; sourceTree = "<group>"; };
+		F5A0DDDE26174D47000D6A82 /* Tetrimino.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Tetrimino.hpp; sourceTree = "<group>"; };
+		F5A0DDE126174D89000D6A82 /* GameBoard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameBoard.cpp; sourceTree = "<group>"; };
+		F5A0DDE226174D89000D6A82 /* GameBoard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameBoard.hpp; sourceTree = "<group>"; };
+		F5A0DDE526174DF8000D6A82 /* Tetriminos.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Tetriminos.cpp; sourceTree = "<group>"; };
+		F5A0DDE626174DF8000D6A82 /* Tetriminos.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Tetriminos.hpp; sourceTree = "<group>"; };
+		F5A0DDEC26174EA5000D6A82 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		F5A0DDED26174EA5000D6A82 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		F5A0DDF026175078000D6A82 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F5A87AD9260129E300BF1411 /* tetris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tetris; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A87ADC260129E300BF1411 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F5A87AE52606778300BF1411 /* Shape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
@@ -61,6 +83,21 @@
 			isa = PBXGroup;
 			children = (
 				F5A87ADC260129E300BF1411 /* main.cpp */,
+				F5A0DDF026175078000D6A82 /* README.md */,
+				F5A0DDEC26174EA5000D6A82 /* Player.cpp */,
+				F5A0DDED26174EA5000D6A82 /* Player.hpp */,
+				F5A0DDDD26174D47000D6A82 /* Tetrimino.cpp */,
+				F5A0DDE526174DF8000D6A82 /* Tetriminos.cpp */,
+				F5A0DDE626174DF8000D6A82 /* Tetriminos.hpp */,
+				F5A0DDDE26174D47000D6A82 /* Tetrimino.hpp */,
+				F5A0DDE126174D89000D6A82 /* GameBoard.cpp */,
+				F5A0DDE226174D89000D6A82 /* GameBoard.hpp */,
+				F5A0DDD526174CB2000D6A82 /* Point.cpp */,
+				F5A0DDD926174CD6000D6A82 /* Cell.cpp */,
+				F5A0DDDA26174CD6000D6A82 /* Cell.hpp */,
+				F5A0DDD626174CB2000D6A82 /* Point.hpp */,
+				F5A0DDD126174C6F000D6A82 /* common.cpp */,
+				F5A0DDD226174C6F000D6A82 /* common.hpp */,
 				F5A87AE52606778300BF1411 /* Shape.cpp */,
 				F5A87AE62606778300BF1411 /* Shape.hpp */,
 			);
@@ -123,8 +160,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A0DDD726174CB2000D6A82 /* Point.cpp in Sources */,
+				F5A0DDE326174D89000D6A82 /* GameBoard.cpp in Sources */,
+				F5A0DDEE26174EA5000D6A82 /* Player.cpp in Sources */,
 				F5A87ADD260129E300BF1411 /* main.cpp in Sources */,
+				F5A0DDD326174C6F000D6A82 /* common.cpp in Sources */,
 				F5A87AE72606778300BF1411 /* Shape.cpp in Sources */,
+				F5A0DDE726174DF8000D6A82 /* Tetriminos.cpp in Sources */,
+				F5A0DDDF26174D47000D6A82 /* Tetrimino.cpp in Sources */,
+				F5A0DDDB26174CD6000D6A82 /* Cell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
