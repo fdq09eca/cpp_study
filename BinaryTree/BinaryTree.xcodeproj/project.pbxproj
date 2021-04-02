@@ -7,17 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F5A87AF62608DF9700BF1411 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87AF52608DF9700BF1411 /* main.cpp */; };
-		F5A87B002609423800BF1411 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87AFE2609423800BF1411 /* Grid.cpp */; };
-		F5A87B0826094B1400BF1411 /* Brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87B0626094B1400BF1411 /* Brick.cpp */; };
-		F5A87B0C26095EBD00BF1411 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87B0A26095EBD00BF1411 /* Player.cpp */; };
-		F5A87B102609615000BF1411 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87B0E2609615000BF1411 /* common.cpp */; };
-		F5A87B15260969F200BF1411 /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87B13260969F200BF1411 /* Paddle.cpp */; };
-		F5A87B1B26096CE400BF1411 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A87B1926096CE400BF1411 /* Ball.cpp */; };
+		F5A0DDA42615CF62000D6A82 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDA32615CF62000D6A82 /* main.cpp */; };
+		F5A0DDAD2615CF7A000D6A82 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDAB2615CF7A000D6A82 /* common.cpp */; };
+		F5A0DDB62615D71E000D6A82 /* btree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDB42615D71E000D6A82 /* btree.cpp */; };
+		F5A0DDBA2615FCE0000D6A82 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDB82615FCE0000D6A82 /* Test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F5A87AF02608DF9700BF1411 /* CopyFiles */ = {
+		F5A0DD9E2615CF62000D6A82 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -29,25 +26,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F5A0DDC12617229E000D6A82 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F5A87AF22608DF9700BF1411 /* Arkanoid */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Arkanoid; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5A87AF52608DF9700BF1411 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		F5A87AFE2609423800BF1411 /* Grid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
-		F5A87AFF2609423800BF1411 /* Grid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grid.hpp; sourceTree = "<group>"; };
-		F5A87B0626094B1400BF1411 /* Brick.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Brick.cpp; sourceTree = "<group>"; };
-		F5A87B0726094B1400BF1411 /* Brick.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Brick.hpp; sourceTree = "<group>"; };
-		F5A87B0A26095EBD00BF1411 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
-		F5A87B0B26095EBD00BF1411 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
-		F5A87B0E2609615000BF1411 /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
-		F5A87B0F2609615000BF1411 /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
-		F5A87B13260969F200BF1411 /* Paddle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
-		F5A87B14260969F200BF1411 /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
-		F5A87B1926096CE400BF1411 /* Ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
-		F5A87B1A26096CE400BF1411 /* Ball.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
+		F5A0DDA02615CF62000D6A82 /* BinaryTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinaryTree; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5A0DDA32615CF62000D6A82 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F5A0DDAB2615CF7A000D6A82 /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		F5A0DDAC2615CF7A000D6A82 /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
+		F5A0DDB42615D71E000D6A82 /* btree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = btree.cpp; sourceTree = "<group>"; };
+		F5A0DDB52615D71E000D6A82 /* btree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = btree.hpp; sourceTree = "<group>"; };
+		F5A0DDB82615FCE0000D6A82 /* Test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
+		F5A0DDB92615FCE0000D6A82 /* Test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F5A87AEF2608DF9700BF1411 /* Frameworks */ = {
+		F5A0DD9D2615CF62000D6A82 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,77 +47,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F5A87AE92608DF9700BF1411 = {
+		F5A0DD972615CF62000D6A82 = {
 			isa = PBXGroup;
 			children = (
-				F5A87AF42608DF9700BF1411 /* Arkanoid */,
-				F5A87AF32608DF9700BF1411 /* Products */,
+				F5A0DDA22615CF62000D6A82 /* BinaryTree */,
+				F5A0DDA12615CF62000D6A82 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F5A87AF32608DF9700BF1411 /* Products */ = {
+		F5A0DDA12615CF62000D6A82 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F5A87AF22608DF9700BF1411 /* Arkanoid */,
+				F5A0DDA02615CF62000D6A82 /* BinaryTree */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F5A87AF42608DF9700BF1411 /* Arkanoid */ = {
+		F5A0DDA22615CF62000D6A82 /* BinaryTree */ = {
 			isa = PBXGroup;
 			children = (
-				F5A87AF52608DF9700BF1411 /* main.cpp */,
-				F5A0DDC12617229E000D6A82 /* README.md */,
-				F5A87B0E2609615000BF1411 /* common.cpp */,
-				F5A87B0F2609615000BF1411 /* common.hpp */,
-				F5A87AFE2609423800BF1411 /* Grid.cpp */,
-				F5A87B0626094B1400BF1411 /* Brick.cpp */,
-				F5A87B0726094B1400BF1411 /* Brick.hpp */,
-				F5A87B13260969F200BF1411 /* Paddle.cpp */,
-				F5A87B14260969F200BF1411 /* Paddle.hpp */,
-				F5A87AFF2609423800BF1411 /* Grid.hpp */,
-				F5A87B1926096CE400BF1411 /* Ball.cpp */,
-				F5A87B1A26096CE400BF1411 /* Ball.hpp */,
-				F5A87B0A26095EBD00BF1411 /* Player.cpp */,
-				F5A87B0B26095EBD00BF1411 /* Player.hpp */,
+				F5A0DDA32615CF62000D6A82 /* main.cpp */,
+				F5A0DDB82615FCE0000D6A82 /* Test.cpp */,
+				F5A0DDB92615FCE0000D6A82 /* Test.hpp */,
+				F5A0DDB42615D71E000D6A82 /* btree.cpp */,
+				F5A0DDB52615D71E000D6A82 /* btree.hpp */,
+				F5A0DDAB2615CF7A000D6A82 /* common.cpp */,
+				F5A0DDAC2615CF7A000D6A82 /* common.hpp */,
 			);
-			path = Arkanoid;
+			path = BinaryTree;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F5A87AF12608DF9700BF1411 /* Arkanoid */ = {
+		F5A0DD9F2615CF62000D6A82 /* BinaryTree */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5A87AF92608DF9700BF1411 /* Build configuration list for PBXNativeTarget "Arkanoid" */;
+			buildConfigurationList = F5A0DDA72615CF62000D6A82 /* Build configuration list for PBXNativeTarget "BinaryTree" */;
 			buildPhases = (
-				F5A87AEE2608DF9700BF1411 /* Sources */,
-				F5A87AEF2608DF9700BF1411 /* Frameworks */,
-				F5A87AF02608DF9700BF1411 /* CopyFiles */,
+				F5A0DD9C2615CF62000D6A82 /* Sources */,
+				F5A0DD9D2615CF62000D6A82 /* Frameworks */,
+				F5A0DD9E2615CF62000D6A82 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Arkanoid;
-			productName = Arkanoid;
-			productReference = F5A87AF22608DF9700BF1411 /* Arkanoid */;
+			name = BinaryTree;
+			productName = BinaryTree;
+			productReference = F5A0DDA02615CF62000D6A82 /* BinaryTree */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F5A87AEA2608DF9700BF1411 /* Project object */ = {
+		F5A0DD982615CF62000D6A82 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					F5A87AF12608DF9700BF1411 = {
+					F5A0DD9F2615CF62000D6A82 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = F5A87AED2608DF9700BF1411 /* Build configuration list for PBXProject "Arkanoid" */;
+			buildConfigurationList = F5A0DD9B2615CF62000D6A82 /* Build configuration list for PBXProject "BinaryTree" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,35 +118,32 @@
 				en,
 				Base,
 			);
-			mainGroup = F5A87AE92608DF9700BF1411;
-			productRefGroup = F5A87AF32608DF9700BF1411 /* Products */;
+			mainGroup = F5A0DD972615CF62000D6A82;
+			productRefGroup = F5A0DDA12615CF62000D6A82 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F5A87AF12608DF9700BF1411 /* Arkanoid */,
+				F5A0DD9F2615CF62000D6A82 /* BinaryTree */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F5A87AEE2608DF9700BF1411 /* Sources */ = {
+		F5A0DD9C2615CF62000D6A82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5A87B0826094B1400BF1411 /* Brick.cpp in Sources */,
-				F5A87AF62608DF9700BF1411 /* main.cpp in Sources */,
-				F5A87B002609423800BF1411 /* Grid.cpp in Sources */,
-				F5A87B102609615000BF1411 /* common.cpp in Sources */,
-				F5A87B0C26095EBD00BF1411 /* Player.cpp in Sources */,
-				F5A87B15260969F200BF1411 /* Paddle.cpp in Sources */,
-				F5A87B1B26096CE400BF1411 /* Ball.cpp in Sources */,
+				F5A0DDAD2615CF7A000D6A82 /* common.cpp in Sources */,
+				F5A0DDBA2615FCE0000D6A82 /* Test.cpp in Sources */,
+				F5A0DDA42615CF62000D6A82 /* main.cpp in Sources */,
+				F5A0DDB62615D71E000D6A82 /* btree.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		F5A87AF72608DF9700BF1411 /* Debug */ = {
+		F5A0DDA52615CF62000D6A82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -222,7 +202,7 @@
 			};
 			name = Debug;
 		};
-		F5A87AF82608DF9700BF1411 /* Release */ = {
+		F5A0DDA62615CF62000D6A82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -274,30 +254,18 @@
 			};
 			name = Release;
 		};
-		F5A87AFA2608DF9700BF1411 /* Debug */ = {
+		F5A0DDA82615CF62000D6A82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
-				GCC_WARN_PEDANTIC = YES;
-				HEADER_SEARCH_PATHS = /opt/homebrew/Cellar/sdl2/2.0.14_1/include;
-				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/sdl2/2.0.14_1/lib;
-				OTHER_LDFLAGS = "-lSDL2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		F5A87AFB2608DF9700BF1411 /* Release */ = {
+		F5A0DDA92615CF62000D6A82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
-				GCC_WARN_PEDANTIC = YES;
-				HEADER_SEARCH_PATHS = /opt/homebrew/Cellar/sdl2/2.0.14_1/include;
-				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/sdl2/2.0.14_1/lib;
-				OTHER_LDFLAGS = "-lSDL2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -305,25 +273,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F5A87AED2608DF9700BF1411 /* Build configuration list for PBXProject "Arkanoid" */ = {
+		F5A0DD9B2615CF62000D6A82 /* Build configuration list for PBXProject "BinaryTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F5A87AF72608DF9700BF1411 /* Debug */,
-				F5A87AF82608DF9700BF1411 /* Release */,
+				F5A0DDA52615CF62000D6A82 /* Debug */,
+				F5A0DDA62615CF62000D6A82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F5A87AF92608DF9700BF1411 /* Build configuration list for PBXNativeTarget "Arkanoid" */ = {
+		F5A0DDA72615CF62000D6A82 /* Build configuration list for PBXNativeTarget "BinaryTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F5A87AFA2608DF9700BF1411 /* Debug */,
-				F5A87AFB2608DF9700BF1411 /* Release */,
+				F5A0DDA82615CF62000D6A82 /* Debug */,
+				F5A0DDA92615CF62000D6A82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F5A87AEA2608DF9700BF1411 /* Project object */;
+	rootObject = F5A0DD982615CF62000D6A82 /* Project object */;
 }

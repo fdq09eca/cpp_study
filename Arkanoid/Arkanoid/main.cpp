@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
         delta_time          = (curr_time - last_time)/1000.0f;
         delta_time          = std::min(0.05f, delta_time);
         
-        const int n = 10;
+        const int n = 100;
         for (int t = 0; t < n; t++) {
             running = player.update(delta_time / n);
             if (!running) break;
