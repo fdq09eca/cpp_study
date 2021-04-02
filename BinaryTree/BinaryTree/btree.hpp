@@ -64,17 +64,17 @@ struct Tree {
     
 #else
     
-//    Node* insert(Node* node, const int v) {
-//        if (!node)              return new Node(v);
-//        if (v > node->value)    node->right =  insert(node->right, v);
-//        if (v < node->value)    node->left  =  insert(node->left, v);
-//        return node;
-//    }
-//
-//    Tree& insert(const int v) {
-//        root = insert(root, v);
-//        return *this;
-//    }
+    Node* insert(Node* node, const int v) {
+        if (!node)              return new Node(v);
+        if (v > node->value)    node->right =  insert(node->right, v);
+        if (v < node->value)    node->left  =  insert(node->left, v);
+        return node;
+    }
+
+    Tree& insert(const int v) {
+        root = insert(root, v);
+        return *this;
+    }
     
 #endif
     
