@@ -11,11 +11,16 @@
 struct Test {
     void insert() {
         Tree tree;
-        tree.insert(4);
-        tree.insert(3);
-        tree.insert(5);
+        tree.insert(4, "Amy");
+        tree.insert(3, "Bob");
+        tree.insert(5, "Chris");
+        tree.insert(6, "Dave");
+        tree.insert(7, "Eva");
         TEST(tree.find(4) != nullptr);
-        TEST(tree.find(6) == nullptr);
+        TEST(strcmp(tree.find(4)->value, "Amy") == 0);
+        TEST(strcmp(tree.find(6)->value, "Dave") == 0);
+        TEST(tree.find(10) == nullptr);
+        tree.print();
     }
     
     void run(){
