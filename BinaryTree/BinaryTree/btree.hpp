@@ -98,7 +98,7 @@ struct Tree {
 #else
     
     Node* insert(Node* node, const int k, const char* c) {
-        if (!node)              return new Node(k, c);
+        if (!node)            return new Node(k, c);
         if (k > node->key)    node->right =  insert(node->right, k, c);
         if (k < node->key)    node->left  =  insert(node->left, k, c);
         return node;
@@ -110,7 +110,7 @@ struct Tree {
     }
     
     const Node* find(Node* node, int k) const {
-        if (!node) return nullptr;
+        if (!node)          return nullptr;
         if (k > node->key ) return find(node->right, k);
         if (k < node->key ) return find(node->left, k);
         return node;
