@@ -9,16 +9,13 @@
 #include "btree.hpp"
 
 struct Test {
-    
-    
     void insert() {
         Tree tree;
-//        tree.root = tree.insert(tree.root, 4);
-//        tree.root = tree.insert(tree.root, 3);
-//        tree.root = tree.insert(tree.root, 5);
         tree.insert(4);
         tree.insert(3);
         tree.insert(5);
+        TEST(tree.find(4) != nullptr);
+        TEST(tree.find(6) == nullptr);
     }
     
     void run(){

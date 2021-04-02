@@ -17,5 +17,3 @@ A simple clone of [Tetris](https://en.wikipedia.org/wiki/Tetris)
 - [ ] drop provision (ghost piece)
 - [ ] score
 - [ ] roll cleaning animation
-
-
