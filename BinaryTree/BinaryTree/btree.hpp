@@ -8,14 +8,13 @@
 #pragma once
 #include "common.hpp"
 #include <stdlib.h>
-#define CHRIS_VER 1
+#define CHRIS_VER 0
 
 struct Node {
     Node* left = nullptr;
     Node* right = nullptr;
+    char* value = nullptr;
     int key;
-    char* value;
-    
     
     Node(const int k, const char* c) {
         key = k;
@@ -23,7 +22,7 @@ struct Node {
     }
     
     ~Node(){
-        std::cout << "delete node val: " << value << "\n";
+        if (value)  std::cout << "delete node val: " << value << "\n";
         delete left;
         delete right;
         clear();
@@ -32,8 +31,8 @@ struct Node {
     void clear() {
         left = nullptr;
         right = nullptr;
-        free(value);
         key = 0;
+        if (value) free(value);
         value = nullptr;
     }
     
@@ -75,9 +74,26 @@ struct Tree {
         }
         *p = new Node(k, c);
         if (!*p) throw std::bad_alloc();
+        std::cout << "Node(" << k << ", " << c <<") inserted.\n";
 
         return *this;
     }
+    
+    const Node* find(int k) {
+        Node* p = root;
+        while (p) {
+            if (k == p->key) return p;
+            if (k > p->key) {
+                p = p->right;
+                continue;
+            }
+            if (k < p->key) {
+                p = p->left;
+                continue;
+            }
+        }
+        return p;
+    };
     
 #else
     
@@ -93,23 +109,22 @@ struct Tree {
         return *this;
     }
     
+    const Node* find(Node* node, int k) const {
+        if (!node) return nullptr;
+        if (k > node->key ) return find(node->right, k);
+        if (k < node->key ) return find(node->left, k);
+        return node;
+    }
+    
+    const Node* find(int k) const {
+        return find(root, k);
+    }
+    
 #endif
     
-    Node* find(int k) {
-        Node* p = root;
-        while (p) {
-            if (k == p->key) return p;
-            if (k > p->key) {
-                p = p->right;
-                continue;
-            }
-            if (k < p->key) {
-                p = p->left;
-                continue;
-            }
-        }
-        return p;
-    };
+    
+    
+    
     
     void print(){
         std::cout << "root: ";
