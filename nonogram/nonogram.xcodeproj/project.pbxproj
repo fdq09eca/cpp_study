@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F504A22025E6057F0076D504 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F504A21F25E6057F0076D504 /* main.cpp */; };
+		F5A0DDC4261728FF000D6A82 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDC2261728FF000D6A82 /* common.cpp */; };
+		F5A0DDC826172AB1000D6A82 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDC626172AB1000D6A82 /* Point.cpp */; };
+		F5A0DDCD26172B4A000D6A82 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5A0DDCB26172B4A000D6A82 /* Grid.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,13 @@
 /* Begin PBXFileReference section */
 		F504A21C25E6057F0076D504 /* nonogram */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = nonogram; sourceTree = BUILT_PRODUCTS_DIR; };
 		F504A21F25E6057F0076D504 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F5A0DDC2261728FF000D6A82 /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		F5A0DDC3261728FF000D6A82 /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
+		F5A0DDC626172AB1000D6A82 /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
+		F5A0DDC726172AB1000D6A82 /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
+		F5A0DDCB26172B4A000D6A82 /* Grid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
+		F5A0DDCC26172B4A000D6A82 /* Grid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grid.hpp; sourceTree = "<group>"; };
+		F5A0DDCF26172F02000D6A82 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,13 @@
 			isa = PBXGroup;
 			children = (
 				F504A21F25E6057F0076D504 /* main.cpp */,
+				F5A0DDCF26172F02000D6A82 /* README.md */,
+				F5A0DDCB26172B4A000D6A82 /* Grid.cpp */,
+				F5A0DDCC26172B4A000D6A82 /* Grid.hpp */,
+				F5A0DDC626172AB1000D6A82 /* Point.cpp */,
+				F5A0DDC726172AB1000D6A82 /* Point.hpp */,
+				F5A0DDC2261728FF000D6A82 /* common.cpp */,
+				F5A0DDC3261728FF000D6A82 /* common.hpp */,
 			);
 			path = nonogram;
 			sourceTree = "<group>";
@@ -118,7 +135,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A0DDC826172AB1000D6A82 /* Point.cpp in Sources */,
+				F5A0DDC4261728FF000D6A82 /* common.cpp in Sources */,
 				F504A22025E6057F0076D504 /* main.cpp in Sources */,
+				F5A0DDCD26172B4A000D6A82 /* Grid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
