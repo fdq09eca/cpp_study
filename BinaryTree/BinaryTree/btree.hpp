@@ -17,9 +17,9 @@ struct Node {
     char* value;
     
     
-    Node(const int k, const char* v) {
+    Node(const int k, const char* c) {
         key = k;
-        value = strdup(v);
+        value = strdup(c);
     }
     
     ~Node(){
