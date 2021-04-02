@@ -41,9 +41,9 @@ struct Test {
     }
     
     void run(){
-//        test("insert()");
+        test("insert()");
         init_tree();
         find();
-//        print();
+        print();
     }
 };

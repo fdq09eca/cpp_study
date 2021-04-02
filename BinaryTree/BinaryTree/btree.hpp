@@ -8,7 +8,7 @@
 #pragma once
 #include "common.hpp"
 #include <stdlib.h>
-#define CHRIS_VER 0
+#define RECUR_VER 1
 
 struct Node {
     Node* left = nullptr;
@@ -56,7 +56,32 @@ struct Tree {
     ~Tree() {
         delete root;
     }
-#if CHRIS_VER
+#if RECUR_VER
+    Node* insert(Node* node, const int k, const char* c) {
+        if (!node)            return new Node(k, c);
+        if (k > node->key)    node->right =  insert(node->right, k, c);
+        if (k < node->key)    node->left  =  insert(node->left, k, c);
+        return node;
+    }
+
+    Tree& insert(const int k, const char* c) {
+        root = insert(root, k, c);
+        return *this;
+    }
+    
+    const Node* find(Node* node, int k) const {
+        if (!node)          return nullptr;
+        if (k > node->key ) return find(node->right, k);
+        if (k < node->key ) return find(node->left, k);
+        return node;
+    }
+    
+    const Node* find(int k) const {
+        return find(root, k);
+    }
+    
+#else
+    
     Tree& insert(const int k, const char* c) {
         Node** p = &root;
         while (*p) {
@@ -94,32 +119,6 @@ struct Tree {
         }
         return p;
     };
-    
-#else
-    
-    Node* insert(Node* node, const int k, const char* c) {
-        if (!node)            return new Node(k, c);
-        if (k > node->key)    node->right =  insert(node->right, k, c);
-        if (k < node->key)    node->left  =  insert(node->left, k, c);
-        return node;
-    }
-
-    Tree& insert(const int k, const char* c) {
-        root = insert(root, k, c);
-        return *this;
-    }
-    
-    const Node* find(Node* node, int k) const {
-        if (!node)          return nullptr;
-        if (k > node->key ) return find(node->right, k);
-        if (k < node->key ) return find(node->left, k);
-        return node;
-    }
-    
-    const Node* find(int k) const {
-        return find(root, k);
-    }
-    
 #endif
     
     
