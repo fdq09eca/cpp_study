@@ -40,10 +40,29 @@ struct Test {
         tree.print();
     }
     
+    void height(){
+        test("height()");
+        dump_var(tree.height());
+    }
+    
+    void min_key(){
+        test("min_key()");
+        dump_var(tree.min_key());
+    }
+    
+    void max_key(){
+        test("max_key()");
+        dump_var(tree.max_key());
+    }
+    
     void run(){
         test("insert()");
         init_tree();
-        find();
-        print();
+        TEST(tree.min_key()->key == 3);
+        TEST(tree.max_key()->key == 7);
+        height();
+//        find();
+//        print();
+        
     }
 };

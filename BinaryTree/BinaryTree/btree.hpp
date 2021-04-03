@@ -37,13 +37,16 @@ struct Node {
     }
     
     void print() {
-        std::cout << key << ":" << "[" << value << "]" << "\n";
+        std::cout << "\t" <<key << ":" << "[" << value << "]";
         if (left) {
-            std::cout << key <<" - <L> ";
+            std::cout << "\n\t\t/";
+            if (right) std::cout << "\t\\";
+            std::cout << "\n";
             left->print();
         }
         if (right) {
-            std::cout << key <<" - <R> ";
+            if (!left) std::cout << "\n\t\t\t\t\\\n";
+//            std::cout << key <<" - <R> ";
             right->print();
         }
     }
@@ -76,8 +79,49 @@ struct Tree {
         return node;
     }
     
-    const Node* find(int k) const {
+    const Node* find(const int k) const {
         return find(root, k);
+    }
+    
+//    int height(Node* node, const int curr_height) {
+//        if (!node) return curr_height - 1;
+//        int right_tree_height = height(node->right, curr_height + 1);
+//        int left_tree_height = height(node->left, curr_height + 1);
+//        return std::max(right_tree_height, left_tree_height);
+//    }
+    
+//    int height(){
+//        return height(root, 0);
+//    }
+    int height(Node* node) {
+        if (!node) return -1;
+        int left_h  = height(node->left);
+        int right_h  = height(node->right);
+        return std::max(left_h, right_h) + 1;
+        
+    }
+    int height(){
+        return height(root);
+    }
+    
+    Node* min_key(Node* node) {
+        if (!node) return nullptr;
+        if (!node->left) return node;
+        return min_key(node->left);
+    }
+    
+    Node* min_key() {
+        return min_key(root);
+    }
+    
+    Node* max_key(Node* node) {
+        if (!node) return nullptr;
+        if (!node->right) return node;
+        return max_key(node->right);
+    }
+    
+    Node* max_key() {
+        return max_key(root);
     }
     
 #else
