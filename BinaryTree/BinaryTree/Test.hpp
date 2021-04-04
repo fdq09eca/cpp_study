@@ -55,12 +55,49 @@ struct Test {
         dump_var(tree.max_key());
     }
     
+    void v_print(){
+        test("v_print()");
+        tree.v_print();
+    }
+    
     void run(){
         test("insert()");
-        init_tree();
-        TEST(tree.min_key()->key == 3);
-        TEST(tree.max_key()->key == 7);
-        height();
+//        init_tree();
+        
+        tree.insert(25, "Eva");
+        tree.insert(20, "Eva");
+        tree.insert(30, "Eva");
+        tree.insert(19, "Eva");
+        tree.insert(26, "Eva");
+        
+//        tree.insert(15, "Bob");
+//        tree.insert(19, "Dave");
+//        tree.insert(22, "Bob");
+//
+//
+//        tree.insert(18, "Chris");
+//        tree.insert(12, "Eva");
+//        tree.insert(13, "Amy");
+//
+//        tree.insert(20, "Eva");
+//        tree.insert(15, "Bob");
+//        tree.insert(1, "Amy");
+        
+        
+//        tree.insert(21, "Amy");
+//        tree.insert(23, "Chris");
+//        tree.insert(24, "Dave");
+        
+//        TEST(tree.min_key()->key == 3);
+//        TEST(tree.max_key()->key == 7);
+//        height();
+//        v_print();
+//        tree.print_tree();
+//        tree.deep_first_print();
+//        tree.min_sort_print();
+        tree.max_sort_print();
+        dump_var(tree.node_count(tree.root));
+        
 //        find();
 //        print();
         

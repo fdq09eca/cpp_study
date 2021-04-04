@@ -8,7 +8,12 @@
 #pragma once
 #include "common.hpp"
 #include <stdlib.h>
+#include <iomanip>
+#include <vector>
+#include <sstream>
 #define RECUR_VER 1
+
+
 
 struct Node {
     Node* left = nullptr;
@@ -22,7 +27,7 @@ struct Node {
     }
     
     ~Node(){
-        if (value)  std::cout << "delete node val: " << value << "\n";
+//        if (value)  std::cout << "delete node val: " << value << "\n";
         delete left;
         delete right;
         clear();
@@ -93,6 +98,7 @@ struct Tree {
 //    int height(){
 //        return height(root, 0);
 //    }
+    
     int height(Node* node) {
         if (!node) return -1;
         int left_h  = height(node->left);
@@ -164,14 +170,146 @@ struct Tree {
         return p;
     };
 #endif
+    void deep_first_print() {
+        using namespace std;
+        struct helper {
+            vector<vector<Node*>> rows;
+            
+            void recur(Node* node, int lv) {
+                if (!node) return;
+                if (rows.size() <= lv) rows.resize(lv + 1);
+                vector<Node*>& curr_row = rows[lv];
+                curr_row.push_back(node);
+                recur(node->left, lv+1);
+                recur(node->right, lv+1);
+            }
+        };
+        helper h;
+        h.recur(root, 0);
+        for (size_t i = 0, n = h.rows.size(); i < n; i++) {
+            size_t lv = n - i - 1;
+            for (auto& p: h.rows[lv]) {
+                std::cout << p->key << " ";
+            }
+        }
+    }
     
     
+    void _min_sort_print(Node* node){
+        if (!node) return;
+        _min_sort_print(node->left);
+        std::cout << node->key << " ";
+        _min_sort_print(node->right);
+    }
+    
+    void min_sort_print(){
+        _min_sort_print(root);
+        std::cout <<"\n";
+    }
+    
+    void _max_sort_print(Node* node){
+        if (!node) return;
+        _max_sort_print(node->right);
+        std::cout << node->key << " ";
+        _max_sort_print(node->left);
+    }
+    
+    void max_sort_print(){
+        _max_sort_print(root);
+        std::cout <<"\n";
+    }
     
     
+    int node_count(Node* node) {
+//        if (!node) return 0;
+//        return node_count(node->left) + node_count(node->right) + 1;
+        return (node)? node_count(node->left) + node_count(node->right) + 1 : 0;
+    }
     
     void print(){
         std::cout << "root: ";
         root->print();
     }
+    
+    void v_print(Node* node, int indent, const char* prefix) {
+        
+        if (!node) return;
+        for (int i = 0; i < indent; i ++) {
+            std::cout << "  ";
+        }
+        std::cout << prefix;
+
+        std::cout << node->key << "[" << node->value <<"]\n";
+        v_print(node->left, indent + 1, "L:");
+        v_print(node->right, indent + 1, "R:");
+    }
+    
+    void v_print(){
+        v_print(root, 0, "");
+    }
+    
+    void print_tree();
+    
 };
 
+class Tree_printer{
+    std::vector<std::vector<Node*>> m_rows;
+//    Tree* m_tree = nullptr;
+public:
+    Tree_printer(Tree* tree){
+        print_row(tree->root, 0);
+        for (size_t i = 0, n = m_rows.size(); i < n ;i++) {
+            size_t rev_row = n - i;
+            
+            int interval = (1 << rev_row) - 1;
+            //
+            for (int i = 0; i < interval / 2; i++) {
+                std::cout << "  ";
+            }
+            
+            for (auto& node: m_rows[i]) {
+                if (!node) {
+                    std::cout << "[__]";
+                } else {
+                    std::cout << "[" << std::setw(2) << node->key << "]";
+                }
+                
+                // interval
+                
+                for (int j = 1; j < interval; j++) {
+                    std::cout << "  ";
+                }
+            }
+            std::cout << "\n";
+        }
+    }
+    
+    void print_row(Node* node, int curr_lv){
+        
+        if (m_rows.size() <= curr_lv){
+            m_rows.resize(curr_lv + 1);
+            
+            if (curr_lv > 0){
+                size_t prev_row = m_rows[curr_lv - 1].size() - 1;
+                auto& s = m_rows[curr_lv];
+                for (size_t i = 0; i < prev_row * 2; i++) {
+                    s.push_back(nullptr);
+                }
+            }
+                        
+        }
+        
+        auto& curr_row = m_rows[curr_lv];
+        curr_row.push_back(node);
+        if (!node) return;
+//        s <<"["<< std::setw(2) << node->key <<"]";
+        print_row(node->left , curr_lv + 1);
+        print_row(node->right, curr_lv + 1);
+    }
+       
+    
+};
+
+inline void Tree::print_tree(){
+    Tree_printer(this);
+}
