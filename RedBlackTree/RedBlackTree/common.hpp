@@ -5,9 +5,20 @@
 //  Created by ChrisLam on 04/04/2021.
 //
 
-#ifndef common_hpp
-#define common_hpp
+#pragma once
+#include <iostream>
+  
 
-#include <stdio.h>
+#define TEST(EXPR)                                                                  \
+    do                                                                              \
+    {                                                                               \
+        printf("[%s] Line %3d: %s\n", ((EXPR) ? " OK " : "FAIL"), __LINE__, #EXPR); \
+    } while (0) //-------------------
 
-#endif /* common_hpp */
+#define dump_var(X)                        \
+    do                                     \
+    {                                      \
+        std::cout << #X ": " << X << "\n"; \
+    } while (false)
+
+
