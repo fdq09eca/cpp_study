@@ -39,14 +39,7 @@ struct Test {
         tree.v_print();
     }
     
-    void left_height() {
-        dump_var(tree.left_height(tree.root));
-    }
-    
-    void right_height() {
-        dump_var(tree.right_height(tree.root));
-    }
-    
+
     void tree_height() {
         dump_var(tree.height(tree.root));
     }
@@ -58,8 +51,6 @@ struct Test {
     void run(){
         tree_init();
         tree_height();
-        left_height();
-        right_height();
         is_balance();
         
 //        std::cout <<"original tree\n";
@@ -68,8 +59,8 @@ struct Test {
 //        right_height();
         left_rotation();
         tree_height();
-        left_height();
-        right_height();
+//        left_height();
+//        right_height();
         is_balance();
         
 //        right_rotation();

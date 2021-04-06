@@ -23,15 +23,15 @@ struct RBtree {
         return node;
     }
     
-    int left_height(Node* node) {
-        if (!node) return 0;
-        return left_height(node->left) + 1;
-    }
-
-    int right_height(Node* node) {
-        if (!node) return 0;
-        return right_height(node->right) + 1;
-    }
+//    int left_height(Node* node) {
+//        if (!node) return 0;
+//        return left_height(node->left) + 1;
+//    }
+//
+//    int right_height(Node* node) {
+//        if (!node) return 0;
+//        return right_height(node->right) + 1;
+//    }
     
     int height(Node* node) {
         if (!node) return 0;
@@ -54,7 +54,7 @@ struct RBtree {
     }
     
     bool is_balance(Node* node) {
-        return std::abs(left_height(node) - right_height(node)) <= 1;
+        return std::abs(height(node->left) - height(node->right)) <= 1;
     }
     
     Node* right_rotation(Node* old_root) {
