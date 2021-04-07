@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  RedBlackTree
+//  AVLTree
 //
 //  Created by ChrisLam on 04/04/2021.
 //

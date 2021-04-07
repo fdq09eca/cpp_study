@@ -41,6 +41,8 @@ struct Node {
         value = nullptr;
     }
     
+    
+    
     void print() {
         std::cout << "\t" <<key << ":" << "[" << value << "]";
         if (left) {
@@ -51,7 +53,6 @@ struct Node {
         }
         if (right) {
             if (!left) std::cout << "\n\t\t\t\t\\\n";
-//            std::cout << key <<" - <R> ";
             right->print();
         }
     }
@@ -88,24 +89,13 @@ struct Tree {
         return find(root, k);
     }
     
-//    int height(Node* node, const int curr_height) {
-//        if (!node) return curr_height - 1;
-//        int right_tree_height = height(node->right, curr_height + 1);
-//        int left_tree_height = height(node->left, curr_height + 1);
-//        return std::max(right_tree_height, left_tree_height);
-//    }
-    
-//    int height(){
-//        return height(root, 0);
-//    }
-    
     int height(Node* node) {
         if (!node) return -1;
         int left_h  = height(node->left);
         int right_h  = height(node->right);
         return std::max(left_h, right_h) + 1;
-        
     }
+    
     int height(){
         return height(root);
     }
@@ -130,6 +120,44 @@ struct Tree {
         return max_key(root);
     }
     
+    Node* _delete(Node* node, int k) {
+        if (!node) return nullptr;
+        
+        if (k != node->key) {
+            if (k > node->key) node->right = _delete(node->right, k);
+            if (k < node->key) node->left = _delete(node->left, k);
+            return node;
+        }
+                
+        Node* del_node = node;
+        free(del_node->value);
+        
+        if (!node->left)   {
+            node = node->right;
+            free(del_node);
+            return node;
+        }
+        
+        if (!node->right) {
+            node = node->left;
+            free(del_node);
+            return node;
+        }
+        
+        if (node->left && node->right) {
+            Node* replacement_node = max_key(node->left);
+            node->key = replacement_node->key;
+            node->value = strdup(replacement_node->value);
+            node->left = _delete(node->left, replacement_node->key);
+        }
+        
+        return node;
+    };
+    
+    Tree& _delete(int k) {
+        root = _delete(root, k);
+        return *this;
+    }
 #else
     
     Tree& insert(const int k, const char* c) {

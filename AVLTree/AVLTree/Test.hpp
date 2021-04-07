@@ -1,15 +1,15 @@
 //
 //  Test.hpp
-//  RedBlackTree
+//  AVLtree
 //
 //  Created by ChrisLam on 04/04/2021.
 //
 
 #pragma once
-#include "RBtree.hpp"
+#include "AVLtree.hpp"
 
 struct Test {
-    RBtree tree;
+    AVLtree tree;
     
     void tree_init(){
         tree.insert(14);
@@ -18,9 +18,19 @@ struct Test {
         tree.insert(18);
         tree.insert(23);
         tree.insert(44);
-//        tree.insert(3);
-//        tree.insert(5);
-//        tree.insert(6);
+    }
+    
+    void _tree_init(){
+//        tree.root = tree._insert(tree.root, 14);
+//        tree.root = tree._insert(tree.root, 12);
+//        tree.root = tree._insert(tree.root, 20);
+//        tree.root = tree._insert(tree.root, 18);
+//        tree.root = tree._insert(tree.root, 23);
+//        tree.root = tree._insert(tree.root, 44);
+        int nums[] = {41, 20, 65, 11, 26, 50, 23, 29, 55};
+        for (int i: nums) {
+            tree.root = tree._insert(tree.root, i);
+        }
     }
     
     void test(const char* test_name ){
@@ -49,20 +59,14 @@ struct Test {
     }
     
     void run(){
-        tree_init();
-        tree_height();
-        is_balance();
-        
-//        std::cout <<"original tree\n";
-//        tree.v_print();
-//        left_height();
-//        right_height();
-        left_rotation();
-        tree_height();
-//        left_height();
-//        right_height();
-        is_balance();
-        
-//        right_rotation();
+//        tree_init();
+//        tree_height();
+//        is_balance();
+//
+//        left_rotation();
+//        tree_height();
+//        is_balance();
+        _tree_init();
+        tree.v_print();
     }
 };

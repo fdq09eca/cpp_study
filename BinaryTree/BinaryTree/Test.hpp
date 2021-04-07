@@ -60,15 +60,31 @@ struct Test {
         tree.v_print();
     }
     
+    
+    void _delete(int k){
+        test("_delete()");
+        tree._delete(k);
+        tree.v_print();
+    }
     void run(){
         test("insert()");
 //        init_tree();
         
-        tree.insert(25, "Eva");
-        tree.insert(20, "Eva");
-        tree.insert(30, "Eva");
-        tree.insert(19, "Eva");
-        tree.insert(26, "Eva");
+        const int keys[] = {20, 14, 23, 44, 12, 18};
+        const char* values[] = {"Amy", "Bob", "Chris", "Emma", "Finoa", "George"};
+        
+        for (int i = 0; i < 6; i++) {
+                tree.insert(keys[i], values[i]);
+        }
+        
+        tree.v_print();
+        
+        for (int i = 0; i < 6; i++) {
+//            std::cout <<"_delete("<<keys[i]<<")\n";
+            _delete(tree.root->key);
+        }
+        
+        
         
 //        tree.insert(15, "Bob");
 //        tree.insert(19, "Dave");
@@ -95,8 +111,8 @@ struct Test {
 //        tree.print_tree();
 //        tree.deep_first_print();
 //        tree.min_sort_print();
-        tree.max_sort_print();
-        dump_var(tree.node_count(tree.root));
+//        tree.max_sort_print();
+//        dump_var(tree.node_count(tree.root));
         
 //        find();
 //        print();

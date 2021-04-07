@@ -1,6 +1,6 @@
 //
 //  Node.hpp
-//  RedBlackTree
+//  AVLtree
 //
 //  Created by ChrisLam on 04/04/2021.
 //
@@ -11,11 +11,10 @@ enum Color {NONE, RED, BLACK};
 
 struct Node {
     int value = 0;
-    Color color = NONE;
     Node* left = nullptr;
     Node* right = nullptr;
     
-    Node(int v, Color c = NONE):value(v), color(c){};
+    Node(int v):value(v){};
     
     ~Node() {
         delete left;
@@ -27,10 +26,6 @@ struct Node {
         left = nullptr;
         right = nullptr;
         value = 0;
-        color = NONE;
     }
     
-    void set_color(Color c) {
-        color = c;
-    }
 };

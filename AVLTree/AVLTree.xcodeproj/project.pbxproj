@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F5E01018261A1287008FB03F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5E01017261A1287008FB03F /* main.cpp */; };
-		F5E01021261A12AF008FB03F /* RBtree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5E0101F261A12AF008FB03F /* RBtree.cpp */; };
+		F5E01021261A12AF008FB03F /* AVLtree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5E0101F261A12AF008FB03F /* AVLtree.cpp */; };
 		F5E01025261A12BB008FB03F /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5E01023261A12BB008FB03F /* common.cpp */; };
 		F5E01029261A1519008FB03F /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5E01027261A1519008FB03F /* Node.cpp */; };
 		F5E0102D261A337C008FB03F /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5E0102B261A337C008FB03F /* Test.cpp */; };
@@ -29,8 +29,8 @@
 /* Begin PBXFileReference section */
 		F5E01014261A1287008FB03F /* RedBlackTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RedBlackTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E01017261A1287008FB03F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		F5E0101F261A12AF008FB03F /* RBtree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RBtree.cpp; sourceTree = "<group>"; };
-		F5E01020261A12AF008FB03F /* RBtree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RBtree.hpp; sourceTree = "<group>"; };
+		F5E0101F261A12AF008FB03F /* AVLtree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AVLtree.cpp; sourceTree = "<group>"; };
+		F5E01020261A12AF008FB03F /* AVLtree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AVLtree.hpp; sourceTree = "<group>"; };
 		F5E01023261A12BB008FB03F /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
 		F5E01024261A12BB008FB03F /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
 		F5E01027261A1519008FB03F /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		F5E0100B261A1287008FB03F = {
 			isa = PBXGroup;
 			children = (
-				F5E01016261A1287008FB03F /* RedBlackTree */,
+				F5E01016261A1287008FB03F /* AVLTree */,
 				F5E01015261A1287008FB03F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,20 +66,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F5E01016261A1287008FB03F /* RedBlackTree */ = {
+		F5E01016261A1287008FB03F /* AVLTree */ = {
 			isa = PBXGroup;
 			children = (
 				F5E01017261A1287008FB03F /* main.cpp */,
-				F5E0101F261A12AF008FB03F /* RBtree.cpp */,
+				F5E0101F261A12AF008FB03F /* AVLtree.cpp */,
 				F5E01023261A12BB008FB03F /* common.cpp */,
 				F5E01024261A12BB008FB03F /* common.hpp */,
-				F5E01020261A12AF008FB03F /* RBtree.hpp */,
+				F5E01020261A12AF008FB03F /* AVLtree.hpp */,
 				F5E0102B261A337C008FB03F /* Test.cpp */,
 				F5E0102C261A337C008FB03F /* Test.hpp */,
 				F5E01027261A1519008FB03F /* Node.cpp */,
 				F5E01028261A1519008FB03F /* Node.hpp */,
 			);
-			path = RedBlackTree;
+			path = AVLTree;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,7 +115,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F5E0100F261A1287008FB03F /* Build configuration list for PBXProject "RedBlackTree" */;
+			buildConfigurationList = F5E0100F261A1287008FB03F /* Build configuration list for PBXProject "AVLTree" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -140,7 +140,7 @@
 			files = (
 				F5E01018261A1287008FB03F /* main.cpp in Sources */,
 				F5E01025261A12BB008FB03F /* common.cpp in Sources */,
-				F5E01021261A12AF008FB03F /* RBtree.cpp in Sources */,
+				F5E01021261A12AF008FB03F /* AVLtree.cpp in Sources */,
 				F5E01029261A1519008FB03F /* Node.cpp in Sources */,
 				F5E0102D261A337C008FB03F /* Test.cpp in Sources */,
 			);
@@ -279,7 +279,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F5E0100F261A1287008FB03F /* Build configuration list for PBXProject "RedBlackTree" */ = {
+		F5E0100F261A1287008FB03F /* Build configuration list for PBXProject "AVLTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5E01019261A1287008FB03F /* Debug */,
