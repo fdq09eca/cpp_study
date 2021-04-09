@@ -28,8 +28,8 @@ struct Test {
     void find() {
         test("find()");
         TEST(tree.find(4) != nullptr);
-        TEST(strcmp(tree.find(4)->value, "Amy") == 0);
-        TEST(strcmp(tree.find(6)->value, "Dave") == 0);
+//        TEST(strcmp(tree.find(4)->value, "Amy") == 0);
+//        TEST(strcmp(tree.find(6)->value, "Dave") == 0);
         TEST(tree.find(10) == nullptr);
     }
     
@@ -73,16 +73,18 @@ struct Test {
         const int keys[] = {20, 14, 23, 44, 12, 18};
         const char* values[] = {"Amy", "Bob", "Chris", "Emma", "Finoa", "George"};
         
-        for (int i = 0; i < 6; i++) {
-                tree.insert(keys[i], values[i]);
+        for (int i = 0; i < 6; i++){
+            tree.insert(keys[i], values[i]);
         }
+            
         
         tree.v_print();
+        _delete(tree.root->key);
         
-        for (int i = 0; i < 6; i++) {
+//        for (int i = 0; i < 6; i++) {
 //            std::cout <<"_delete("<<keys[i]<<")\n";
-            _delete(tree.root->key);
-        }
+//            _delete(tree.root->key);
+//        }
         
         
         

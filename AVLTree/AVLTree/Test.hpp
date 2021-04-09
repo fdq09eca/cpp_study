@@ -10,26 +10,16 @@
 
 struct Test {
     AVLtree tree;
+    static const int NUMS_SIZE = 9;
+    const int nums[NUMS_SIZE] = {41, 20, 65, 11, 26, 50, 23, 29, 55};
     
-    void tree_init(){
-        tree.insert(14);
-        tree.insert(12);
-        tree.insert(20);
-        tree.insert(18);
-        tree.insert(23);
-        tree.insert(44);
-    }
+    
     
     void _tree_init(){
-//        tree.root = tree._insert(tree.root, 14);
-//        tree.root = tree._insert(tree.root, 12);
-//        tree.root = tree._insert(tree.root, 20);
-//        tree.root = tree._insert(tree.root, 18);
-//        tree.root = tree._insert(tree.root, 23);
-//        tree.root = tree._insert(tree.root, 44);
-        int nums[] = {41, 20, 65, 11, 26, 50, 23, 29, 55};
-        for (int i: nums) {
-            tree.root = tree._insert(tree.root, i);
+        
+        for (int i = 0; i < 9; i++) {
+            std::cout << "insert " << nums[i] <<"\n";
+            tree.root = tree._insert(tree.root, nums[i]);
         }
     }
     
@@ -58,6 +48,45 @@ struct Test {
         TEST(tree.is_balance(tree.root)==true);
     }
     
+    void max_value(){
+        dump_var(tree.max_value(tree.root)->value);
+    }
+    
+    void _delete(){
+        tree.v_print();
+        for (int i : nums) {
+            std::cout <<"== delete: "<< tree.root->value <<" ==\n";
+            tree.root = tree._delete(tree.root, tree.root->value);
+            tree.v_print();
+        }
+        
+        _tree_init();
+        tree.v_print();
+        for (int i = 0; i < NUMS_SIZE ; i++) {
+            const int& num = nums[i];
+            std::cout <<"== delete: "<< num <<" ==\n";
+            tree.root = tree._delete(tree.root, num);
+            tree.v_print();
+        }
+        
+        
+        _tree_init();
+        for (int i = 0; i < NUMS_SIZE ; i+=2) {
+            const int& num = nums[i];
+            std::cout <<"== delete: "<< num <<" ==\n";
+            tree.root = tree._delete(tree.root, num);
+            tree.v_print();
+        }
+        
+        _tree_init();
+        for (int i = 1; i < NUMS_SIZE ; i+=2) {
+            const int& num = nums[i];
+            std::cout <<"== delete: "<< num <<" ==\n";
+            tree.root = tree._delete(tree.root, num);
+            tree.v_print();
+        }
+    }
+    
     void run(){
 //        tree_init();
 //        tree_height();
@@ -67,6 +96,8 @@ struct Test {
 //        tree_height();
 //        is_balance();
         _tree_init();
-        tree.v_print();
+        _delete();
+//        tree.v_print();
+//        max_value();
     }
 };

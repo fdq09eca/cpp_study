@@ -18,12 +18,12 @@
 struct Node {
     Node* left = nullptr;
     Node* right = nullptr;
-    char* value = nullptr;
+    std::string value = "";
     int key;
     
     Node(const int k, const char* c) {
         key = k;
-        value = strdup(c);
+        value = c;
     }
     
     ~Node(){
@@ -37,9 +37,10 @@ struct Node {
         left = nullptr;
         right = nullptr;
         key = 0;
-        if (value) free(value);
-        value = nullptr;
+//        if (value) free(value);
+        value.clear();
     }
+    
     
     
     
@@ -78,15 +79,33 @@ struct Tree {
         return *this;
     }
     
-    const Node* find(Node* node, int k) const {
+    Node* find(Node* node, int k) const {
         if (!node)          return nullptr;
         if (k > node->key ) return find(node->right, k);
         if (k < node->key ) return find(node->left, k);
         return node;
     }
     
-    const Node* find(const int k) const {
+    Node* find(const int k) const {
         return find(root, k);
+    }
+    
+    Node* find_parent(Node* node, const int k) {
+        if (!node) return nullptr;
+        
+        if (k > node->key) {
+            if (!node->right) return nullptr;
+            if (k == node->right->key) return node;
+            find_parent(node->right, k);
+        }
+        
+        if (k < node->key) {
+            if (!node->left) return nullptr;
+            if (k == node->left->key) return node;
+            find_parent(node->left, k);
+        }
+        assert(false && "oh no.");
+        return nullptr;
     }
     
     int height(Node* node) {
@@ -122,32 +141,39 @@ struct Tree {
     
     Node* _delete(Node* node, int k) {
         if (!node) return nullptr;
-        
+
         if (k != node->key) {
             if (k > node->key) node->right = _delete(node->right, k);
             if (k < node->key) node->left = _delete(node->left, k);
             return node;
         }
-                
+        
         Node* del_node = node;
-        free(del_node->value);
         
         if (!node->left)   {
             node = node->right;
-            free(del_node);
+            
+            del_node->left = nullptr;
+            del_node->right = nullptr;
+            delete del_node;
+            
             return node;
         }
         
         if (!node->right) {
             node = node->left;
-            free(del_node);
+            
+            del_node->left = nullptr;
+            del_node->right = nullptr;
+            delete del_node;
+            
             return node;
         }
         
         if (node->left && node->right) {
             Node* replacement_node = max_key(node->left);
             node->key = replacement_node->key;
-            node->value = strdup(replacement_node->value);
+            node->value = replacement_node->value;
             node->left = _delete(node->left, replacement_node->key);
         }
         

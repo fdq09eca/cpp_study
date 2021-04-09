@@ -16,20 +16,16 @@ struct AVLtree {
         delete root;
     }
     
-    
-    
-    Node* insert(Node* node, int v) {
-        if (!node) return new Node(v);
-        if (v > node->value) node->right = insert(node->right, v);
-        if (v < node->value) node->left  = insert(node->left, v);
-        return node;
-    }
-    
+        
     Node* _insert(Node* node, int v) {
         if (!node) return new Node(v);
         if (v > node->value) node->right = _insert(node->right, v);
         if (v < node->value) node->left  = _insert(node->left, v);
-        
+        return update(node);
+    }
+    
+    Node* update (Node* node) {
+        if (!node) return nullptr;
         int bal = height(node->left) - height(node->right);
         
         bool LH = bal > 1;
@@ -41,17 +37,64 @@ struct AVLtree {
         return node;
     }
     
+    Node* _delete(Node* node, int v) {
+        
+        if (!node) return nullptr;
+        
+        if (v != node->value) {
+            if (v > node->value) node->right = _delete(node->right, v);
+            if (v < node->value) node->left =  _delete(node->left , v);
+            return update(node);
+        }
+        
+        Node* del_node = node;
+//        if (del_node) del_node->cleanup();
+        
+        if (!node->left) {
+            node = node->right;
+            del_node->cleanup();
+            delete del_node;
+            return update(node);
+        }
+        
+        if (!node->right) {
+            node = node->left;
+            del_node->cleanup();
+            delete del_node;
+            return update(node);
+        }
+        
+        if (node->right && node->left) {
+            Node* replacement_node = max_value(node->left);
+            node->value = replacement_node->value;
+            node->left = _delete(node->left, replacement_node->value);
+            return update(node);
+        }
+//        return update(node);
+        assert( false && "you should not be here.\n");
+        return nullptr;
+    }
+    
+    Node* max_value(Node* node) {
+        if (!node) return nullptr;
+        return node->right? max_value(node->right) : node;
+    }
+    
     Node* _left_balance(Node* root) {
         Node* left_child = root->left;
         
-        int bal = height(left_child->left) - height(left_child->right);
+        int left_height = height(left_child->left);
+        int right_height = height(left_child->right);
         
-        bool LL = bal >= 1;
+        int bal = left_height - right_height;
+        
+        bool LL = bal >=  1;
         bool LR = bal <= -1;
+        bool EH = bal ==  0;
         
         if (LL) return right_rotation(root);
         
-        if (LR) {
+        if (LR || EH) {
             root->left = left_rotation(left_child);
             return right_rotation(root);
         }
@@ -60,20 +103,23 @@ struct AVLtree {
     }
     
     Node* _right_balance(Node* root) {
+//        std::cout <<"right bal;\n";
         Node* right_child = root->right;
+        int left_height = height(right_child->left);
+        int right_height = height(right_child->right);
+        int bal = left_height - right_height;
         
-        int bal = height(right_child->left) > height(right_child->right);
-        
-        bool RL = bal >= 1;
+        bool RL = bal >=  1;
         bool RR = bal <= -1;
+        bool EH = bal ==  0;
         
         if (RR) return left_rotation(root);
         
-        if (RL) {
+        if (RL || EH) {
             root->right = right_rotation(right_child);
             return left_rotation(root);
         }
-        assert("_right_balance failed.\n");
+        assert(false && "_right_balance failed.\n");
         return nullptr;
     }
     
@@ -82,12 +128,6 @@ struct AVLtree {
         return std::max(height(node->left), height(node->right)) + 1;
     }
     
-    AVLtree& insert(int v) {
-        root = insert(root, v);
-        return *this;
-    }
-    
-        
     bool is_balance(Node* node) {
         return std::abs(height(node->left) - height(node->right)) <= 1;
     }
