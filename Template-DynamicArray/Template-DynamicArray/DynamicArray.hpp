@@ -18,6 +18,7 @@ private:
     T*      data    = nullptr;
     int     len     = 0;
     int     cap     = 0;
+    
     bool    in_range_idx(int idx) const {    return idx >= 0 && idx < len;   }
     
     
